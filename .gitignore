@@ -127,6 +127,7 @@ Icon
 .Spotlight-V100
 .Trashes
 
+
 ## hack for graddle wrapper
 !wrapper/*.jar
 !**/wrapper/*.jar
