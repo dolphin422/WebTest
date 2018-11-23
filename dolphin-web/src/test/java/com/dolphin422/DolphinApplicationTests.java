@@ -1,4 +1,4 @@
-package com.dolphin422.dolphin;
+package com.dolphin422;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
