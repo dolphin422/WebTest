@@ -1,5 +1,6 @@
-package com.dolphin422.dolphin.controller;
+package com.dolphin422.controller;
 
+import com.dolphin422.common.util.UUIDGenerator;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -20,6 +21,7 @@ public class HelloController {
     @RequestMapping("/sayHello")
     @ResponseBody
     public String sayHello(String name) {
-        return "Hello " + name;
+
+        return "Hello " + name + UUIDGenerator.getUUID();
     }
 }
