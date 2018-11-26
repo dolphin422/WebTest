@@ -3,13 +3,14 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>dolphin-system</artifactId>
+        <artifactId>dolphin-business</artifactId>
         <groupId>com.dolphin422</groupId>
         <version>1.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>dolphin-system-dao-api</artifactId>
+    <artifactId>dolphin-business-dao-api</artifactId>
+
     <dependencies>
 
         <dependency>
@@ -19,22 +20,21 @@
         </dependency>
         <dependency>
             <groupId>com.dolphin422</groupId>
-            <artifactId>dolphin-system-dao-mysql</artifactId>
+            <artifactId>dolphin-business-dao-mysql</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
-<!--
+        <!--
+                <dependency>
+                    <groupId>com.dolphin422</groupId>
+                    <artifactId>dolphin-business-dao-oracle</artifactId>
+                    <version>1.0-SNAPSHOT</version>
+                </dependency>
+        -->
         <dependency>
             <groupId>com.dolphin422</groupId>
-            <artifactId>dolphin-system-dao-oracle</artifactId>
-            <version>1.0-SNAPSHOT</version>
-        </dependency>
--->
-        <dependency>
-            <groupId>com.dolphin422</groupId>
-            <artifactId>dolphin-system-model</artifactId>
+            <artifactId>dolphin-business-model</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
     </dependencies>
-
 
 </project>
