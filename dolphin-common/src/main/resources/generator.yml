@@ -1,0 +1,13 @@
+# Generator
+#生成文件目录配制
+generator:
+  targetProject: src/main/java
+  javaModel-targetPackage: com.dolphin422.generator.model
+  sqlMap-targetPackage: com.dolphin422.generator.xml
+  javaClient-targetPackage: com.dolphin422.generator.dao
+#数据源配置
+datasource:
+  driver-class-name: com.mysql.jdbc.Driver
+  url: jdbc:mysql://127.0.0.1:3306/dolphin?useUnicode=true&characterEncoding=UTF-8&useSSL=false
+  username: root
+  password: 111111
