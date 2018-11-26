@@ -16,6 +16,7 @@
         <module>dolphin-system-dao-api</module>
         <module>dolphin-system-dao-mysql</module>
         <module>dolphin-system-dao-oracle</module>
+        <module>dolphin-system-model</module>
     </modules>
 
     <artifactId>dolphin-system</artifactId>

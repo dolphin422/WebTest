@@ -6,9 +6,23 @@ Spring Boot Maven Web
   简单的SpringBoot项目,Maven构建,不断丰富中
 
 ## 项目结构
-	|--dolphin
-
-	    |--dolphin-web
+	|--dolphin (pom-parent)
+	    |--dolphin-web (war)
+		|--dolphin-business (pom)
+			|--dolphin-business-controller (jar)
+			|--dolphin-business-service-api (jar)
+			|--dolphin-business-service-impl (jar)
+			|--dolphin-business-dao-api (jar)
+			|--dolphin-business-dao-mysql(oracle) (jar)  
+			|--dolphin-business-model (jar)
+		|--dolphin-system (pom)
+			|--dolphin-system-controller (jar)
+			|--dolphin-system-service-api (jar)
+			|--dolphin-system-service-impl (jar)
+			|--dolphin-system-dao-api (jar)
+			|--dolphin-system-dao-mysql(oracle) (jar)  
+			|--dolphin-system-model (jar)
+		|--dolphin-common (jar)
         
 
 ## 组件
