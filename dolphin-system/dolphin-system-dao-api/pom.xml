@@ -12,16 +12,16 @@
     <artifactId>dolphin-system-dao-api</artifactId>
     <dependencies>
 
-        <dependency>
+<!--        <dependency>
             <groupId>com.dolphin422</groupId>
             <artifactId>dolphin-common</artifactId>
             <version>1.0-SNAPSHOT</version>
-        </dependency>
-        <dependency>
+        </dependency>-->
+<!--        <dependency>
             <groupId>com.dolphin422</groupId>
             <artifactId>dolphin-system-dao-mysql</artifactId>
             <version>1.0-SNAPSHOT</version>
-        </dependency>
+        </dependency>-->
 <!--
         <dependency>
             <groupId>com.dolphin422</groupId>

@@ -13,9 +13,10 @@
     <dependencies>
         <dependency>
             <groupId>com.dolphin422</groupId>
-            <artifactId>dolphin-system-dao-api</artifactId>
+            <artifactId>dolphin-system-service-api</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
+
     </dependencies>
 
 </project>
