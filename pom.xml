@@ -27,39 +27,42 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>1.8</java.version>
         <!--spring-boot-parent版本号，通过spring-boot管理其他第三方依赖版本-->
-        <spring.boot.version>2.1.0.RELEASE</spring.boot.version>
+        <springboot.version>2.1.0.RELEASE</springboot.version>
+        <!--mysql-->
+        <mysql.connector.version>5.1.30</mysql.connector.version>
     </properties>
+
     <!--管理依赖jar包-->
     <dependencyManagement>
         <dependencies>
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-dependencies</artifactId>
-                <version>${spring.boot.version}</version>
+                <version>${springboot.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-starter</artifactId>
-                <version>${spring.boot.version}</version>
+                <version>${springboot.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-starter-web</artifactId>
-                <version>${spring.boot.version}</version>
+                <version>${springboot.version}</version>
             </dependency>
 
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-devtools</artifactId>
-                <version>${spring.boot.version}</version>
+                <version>${springboot.version}</version>
                 <scope>runtime</scope>
             </dependency>
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-starter-test</artifactId>
-                <version>${spring.boot.version}</version>
+                <version>${springboot.version}</version>
                 <scope>test</scope>
             </dependency>
         </dependencies>
@@ -71,7 +74,7 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-                <version>${spring.boot.version}</version>
+                <version>${springboot.version}</version>
             </plugin>
         </plugins>
     </build>
