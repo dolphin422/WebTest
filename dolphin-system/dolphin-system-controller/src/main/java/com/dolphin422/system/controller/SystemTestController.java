@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
- * @Description: 系统模块 Controller层
+ * @Description: 系统模块 请求处理层
  * @Author: DamonJT
  * @CreateDate: 2018.11.23 19:53
  */

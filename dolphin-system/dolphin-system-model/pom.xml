@@ -11,5 +11,13 @@
 
     <artifactId>dolphin-system-model</artifactId>
 
+    <dependencies>
+        <dependency>
+            <groupId>com.dolphin422</groupId>
+            <artifactId>dolphin-common</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
+
 
 </project>
