@@ -17,7 +17,7 @@ spring:
     maxActive: 20
     maxPoolPreparedStatementPerConnectionSize: 20
     minEvictableIdleTimeMillis: 300000
-    #filters: stat,wall,log4j
+    filters: stat,wall,log4j2
     poolPreparedStatements: true
     testOnBorrow: false
     testWhileIdle: true

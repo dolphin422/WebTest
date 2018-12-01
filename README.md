@@ -26,6 +26,16 @@ Spring Boot Maven Web
         
 
 ## 组件
-组件名称|版本|备注
---|:--:|--:
-SpringBoot|2.1.0.RELEASE|
+组件名称 | 版本 
+---- | ---- 
+SpringBoot|2.1.0.RELEASE
+JDK|1.8|
+MySQL JDBC|5.1.30
+Mybatis|1.3.1|
+druid|1.1.10|
+tk.mapper|2.0.2|
+MybatisGenerator|1.3.5|
+
+
+
+
