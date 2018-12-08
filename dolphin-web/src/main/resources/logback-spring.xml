@@ -29,7 +29,7 @@
     </root>
 
     <!-- logger是root的子打印器，可以有多个，输出name配置的包中的日志。 -->
-    <logger name="com.dolphin422" level="DEBUG"/>
+    <logger name="com.dolphin422" level="trace"/>
     <logger name="org.apache.http" level="DEBUG"/>
     <logger name="org.springframework.scheduling" level="INFO"/>
     <!--mybatis-->

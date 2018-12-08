@@ -10,7 +10,7 @@ import java.util.List;
 */
 public interface ISysUserService {
     /**
-     * 分页查询用户
+     *
      * @return
      */
     List<SysUserModel> searchListByPage();
