@@ -13,7 +13,7 @@
     <dependencies>
         <dependency>
             <groupId>com.dolphin422</groupId>
-            <artifactId>dolphin-business-service-api</artifactId>
+            <artifactId>dolphin-business-service-impl</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
     </dependencies>
