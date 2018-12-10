@@ -1,6 +1,6 @@
-package com.dolphin422.system.service.api;
+package com.dolphin422.system.service.api.user;
 
-import com.dolphin422.system.model.SysUserModel;
+import com.dolphin422.system.model.user.SysUserModel;
 
 import java.util.List;
 /**

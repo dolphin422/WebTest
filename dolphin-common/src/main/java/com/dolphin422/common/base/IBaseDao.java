@@ -4,8 +4,8 @@ import tk.mybatis.mapper.common.Mapper;
 import tk.mybatis.mapper.common.MySqlMapper;
 
 /**
- * @Description:  Dao层共用基类
- * @author: DamonJT
+ * @Description:  Dao层基类
+ * @author: DamonJT WIN
  * @createDate: 2018.11.27 17:02
  */
 public interface IBaseDao<T> extends Mapper<T>, MySqlMapper<T> {

@@ -1,5 +1,6 @@
 package com.dolphin422.business.controller;
 
+import com.dolphin422.common.base.BaseController;
 import com.dolphin422.common.util.UUIDGenerator;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,7 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
  */
 @Controller
 @RequestMapping("/business")
-public class BusinessTestController {
+public class BusinessTestController extends BaseController {
 
     @RequestMapping("/hello")
     @ResponseBody

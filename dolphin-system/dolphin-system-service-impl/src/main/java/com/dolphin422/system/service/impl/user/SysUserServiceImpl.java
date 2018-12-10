@@ -1,8 +1,9 @@
-package com.dolphin422.system.service.impl;
+package com.dolphin422.system.service.impl.user;
 
-import com.dolphin422.system.dao.ISysUserDao;
-import com.dolphin422.system.model.SysUserModel;
-import com.dolphin422.system.service.api.ISysUserService;
+import com.dolphin422.common.base.BaseServiceImpl;
+import com.dolphin422.system.dao.user.ISysUserDao;
+import com.dolphin422.system.model.user.SysUserModel;
+import com.dolphin422.system.service.api.user.ISysUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,7 +17,7 @@ import org.springframework.transaction.annotation.Transactional;
 */
 @Service
 @Transactional
-public class SysUserServiceImpl implements ISysUserService {
+public class SysUserServiceImpl extends BaseServiceImpl implements ISysUserService {
 
     @Autowired
     private ISysUserDao userDao;
