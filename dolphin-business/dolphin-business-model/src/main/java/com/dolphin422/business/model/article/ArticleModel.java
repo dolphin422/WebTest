@@ -1,7 +1,11 @@
-package com.dolphin422.generator.model;
+package com.dolphin422.business.model.article;
 
 import java.util.Date;
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Table(name = "ar_article")
 public class ArticleModel {
@@ -20,7 +24,8 @@ public class ArticleModel {
     /**
      * 摘要
      */
-    private String abstract;
+    @Column(name = "article_abstract")
+    private String articleAbstract;
 
     /**
      * 内容ID
@@ -76,7 +81,7 @@ public class ArticleModel {
     /**
      * 创建者
      */
-    private String creater;
+    private String creator;
 
     /**
      * 创建时间
@@ -136,17 +141,17 @@ public class ArticleModel {
      *
      * @return abstract - 摘要
      */
-    public String getAbstract() {
-        return abstract;
+    public String getArticleAbstract() {
+        return articleAbstract;
     }
 
     /**
      * 设置摘要
      *
-     * @param abstract 摘要
+     * @param articleAbstract 摘要
      */
-    public void setAbstract(String abstract) {
-        this.abstract = abstract;
+    public void setAbstract(String articleAbstract) {
+        this.articleAbstract = articleAbstract;
     }
 
     /**
@@ -314,19 +319,19 @@ public class ArticleModel {
     /**
      * 获取创建者
      *
-     * @return creater - 创建者
+     * @return creator - 创建者
      */
-    public String getCreater() {
-        return creater;
+    public String getcreator() {
+        return creator;
     }
 
     /**
      * 设置创建者
      *
-     * @param creater 创建者
+     * @param creator 创建者
      */
-    public void setCreater(String creater) {
-        this.creater = creater;
+    public void setcreator(String creator) {
+        this.creator = creator;
     }
 
     /**
@@ -391,7 +396,7 @@ public class ArticleModel {
         sb.append("Hash = ").append(hashCode());
         sb.append(", id=").append(id);
         sb.append(", title=").append(title);
-        sb.append(", abstract=").append(abstract);
+        sb.append(", articleAbstract=").append(articleAbstract);
         sb.append(", contentId=").append(contentId);
         sb.append(", userId=").append(userId);
         sb.append(", status=").append(status);
@@ -401,7 +406,7 @@ public class ArticleModel {
         sb.append(", appId=").append(appId);
         sb.append(", remark=").append(remark);
         sb.append(", isDeleted=").append(isDeleted);
-        sb.append(", creater=").append(creater);
+        sb.append(", creator=").append(creator);
         sb.append(", gmtCreate=").append(gmtCreate);
         sb.append(", modifier=").append(modifier);
         sb.append(", gmtModified=").append(gmtModified);

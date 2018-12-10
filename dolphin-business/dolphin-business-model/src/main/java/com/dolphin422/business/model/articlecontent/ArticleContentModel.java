@@ -1,7 +1,11 @@
-package com.dolphin422.generator.model;
+package com.dolphin422.business.model.articlecontent;
 
 import java.util.Date;
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Table(name = "ar_article_content")
 public class ArticleContentModel {
@@ -38,7 +42,7 @@ public class ArticleContentModel {
     /**
      * 创建者
      */
-    private String creater;
+    private String creator;
 
     /**
      * 创建时间
@@ -156,19 +160,19 @@ public class ArticleContentModel {
     /**
      * 获取创建者
      *
-     * @return creater - 创建者
+     * @return creator - 创建者
      */
-    public String getCreater() {
-        return creater;
+    public String getcreator() {
+        return creator;
     }
 
     /**
      * 设置创建者
      *
-     * @param creater 创建者
+     * @param creator 创建者
      */
-    public void setCreater(String creater) {
-        this.creater = creater;
+    public void setcreator(String creator) {
+        this.creator = creator;
     }
 
     /**
@@ -254,7 +258,7 @@ public class ArticleContentModel {
         sb.append(", appId=").append(appId);
         sb.append(", remark=").append(remark);
         sb.append(", isDeleted=").append(isDeleted);
-        sb.append(", creater=").append(creater);
+        sb.append(", creator=").append(creator);
         sb.append(", gmtCreate=").append(gmtCreate);
         sb.append(", modifier=").append(modifier);
         sb.append(", gmtModified=").append(gmtModified);
