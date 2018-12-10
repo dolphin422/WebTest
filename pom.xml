@@ -29,7 +29,14 @@
         <!--spring-boot-parent版本号，通过spring-boot管理其他第三方依赖版本-->
         <springboot.version>2.1.0.RELEASE</springboot.version>
         <!--mysql-->
-        <mysql.connector.version>5.1.30</mysql.connector.version>
+        <mysql.connector.version>5.1.38</mysql.connector.version>
+
+        <mapper.plugin>tk.mybatis.mapper.generator.MapperPlugin</mapper.plugin>
+        <mapper.Mapper>tk.mybatis.mapper.common.Mapper</mapper.Mapper>
+        <tk.mapper.version>2.0.2</tk.mapper.version>
+        <generator.version>1.3.5</generator.version>
+        <mybatis.version>1.3.1</mybatis.version>
+        <druid.version>1.1.10</druid.version>
     </properties>
 
     <!--管理依赖jar包-->
@@ -52,7 +59,6 @@
                 <artifactId>spring-boot-starter-web</artifactId>
                 <version>${springboot.version}</version>
             </dependency>
-
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-devtools</artifactId>
@@ -64,6 +70,26 @@
                 <artifactId>spring-boot-starter-test</artifactId>
                 <version>${springboot.version}</version>
                 <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.mybatis.spring.boot</groupId>
+                <artifactId>mybatis-spring-boot-starter</artifactId>
+                <version>${mybatis.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>druid</artifactId>
+                <version>${druid.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>tk.mybatis</groupId>
+                <artifactId>mapper-spring-boot-starter</artifactId>
+                <version>${tk.mapper.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>mysql</groupId>
+                <artifactId>mysql-connector-java</artifactId>
+                <version>${mysql.connector.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
