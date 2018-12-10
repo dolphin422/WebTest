@@ -41,7 +41,7 @@
         </commentGenerator>
         <!--数据库连接的信息：驱动类、连接地址、用户名、密码 -->
         <jdbcConnection driverClass="com.mysql.jdbc.Driver"
-                        connectionURL="jdbc:mysql://127.0.0.1:3306/dolphin?useUnicode=true&amp;characterEncoding=UTF-8&amp;useSSL=false"
+                        connectionURL="jdbc:mysql://127.0.0.1:3306/dolphin?useUnicode=true&amp;characterEncoding=UTF-8&amp;useSSL=false&amp;serverTimezone=GMT%2B8"
                         userId="root"
                         password="111111">
         </jdbcConnection>
@@ -78,7 +78,12 @@
             <property name="enableSubPackages" value="false"/>
         </javaClientGenerator>
         <!--要生成Model的表-->
-        <table tableName="sys_user" domainObjectName="SysUserModel" mapperName="ISysUserDao">
+        <table tableName="ar_article" domainObjectName="ArticleModel" mapperName="IArticleDao">
+            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
+            <!--逆向工程1.3.6及以上版本才可用-->
+            <!-- <domainObjectRenamingRule searchString="^Sys" replaceString=""/>-->
+        </table>
+        <table tableName="ar_article_content" domainObjectName="ArticleContentModel" mapperName="IArticleContentDao">
             <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
             <!--逆向工程1.3.6及以上版本才可用-->
             <!-- <domainObjectRenamingRule searchString="^Sys" replaceString=""/>-->

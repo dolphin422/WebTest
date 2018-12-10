@@ -1,4 +1,4 @@
-package com.dolphin422.system.model;
+package com.dolphin422.system.model.user;
 
 import java.util.Date;
 import javax.persistence.*;

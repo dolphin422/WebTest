@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dolphin422.business.dao.articlecontent.IArticleContentDao">
+    <resultMap id="BaseResultMap" type="com.dolphin422.business.model.articlecontent.ArticleContentModel">
+        <id column="id" jdbcType="VARCHAR" property="id"/>
+        <result column="article_id" jdbcType="VARCHAR" property="articleId"/>
+        <result column="app_id" jdbcType="VARCHAR" property="appId"/>
+        <result column="remark" jdbcType="VARCHAR" property="remark"/>
+        <result column="is_deleted" jdbcType="BIT" property="isDeleted"/>
+        <result column="creator" jdbcType="VARCHAR" property="creator"/>
+        <result column="gmt_create" jdbcType="TIMESTAMP" property="gmtCreate"/>
+        <result column="modifier" jdbcType="VARCHAR" property="modifier"/>
+        <result column="gmt_modified" jdbcType="TIMESTAMP" property="gmtModified"/>
+        <result column="article_content" jdbcType="LONGVARCHAR" property="articleContent"/>
+    </resultMap>
+</mapper>

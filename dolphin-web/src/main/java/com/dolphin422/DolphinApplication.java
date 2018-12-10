@@ -9,7 +9,7 @@ import tk.mybatis.spring.annotation.MapperScan;
 
 @SpringBootApplication
 @ServletComponentScan(value = "com.dolphin422")
-@MapperScan(basePackages = {"com.dolphin422.system.dao"})
+@MapperScan(basePackages = {"com.dolphin422.system.dao", "com.dolphin422.business.dao"})
 public class DolphinApplication extends SpringBootServletInitializer {
 
     public static void main(String[] args) {
