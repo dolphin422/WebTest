@@ -27,6 +27,7 @@ public class ArticleServiceImpl extends BaseServiceImpl implements IArticleServi
     @Autowired
     private IArticleDao articleDao;
 
+    @Override
     public List<ArticleModel> selectAll() {
         List<ArticleModel> modelList = articleDao.selectAll();
         return modelList;

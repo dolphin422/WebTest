@@ -27,6 +27,7 @@ public class ArticleContentServiceImpl extends BaseServiceImpl implements IArtic
     @Autowired
     private IArticleContentDao articleContentDao;
 
+    @Override
     public List<ArticleContentModel> selectAll() {
         List<ArticleContentModel> articleContentModelList = articleContentDao.selectAll();
         return articleContentModelList;

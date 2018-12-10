@@ -11,10 +11,10 @@ import java.util.List;
 import org.springframework.transaction.annotation.Transactional;
 
 /**
-* @description: 用户管理实现类
-* @author:  DamonJT
-* @createDate:  2018.12.08 18:54
-*/
+ * @description: 用户管理实现类
+ * @author: DamonJT
+ * @createDate: 2018.12.08 18:54
+ */
 @Service
 @Transactional
 public class SysUserServiceImpl extends BaseServiceImpl implements ISysUserService {
@@ -22,8 +22,8 @@ public class SysUserServiceImpl extends BaseServiceImpl implements ISysUserServi
     @Autowired
     private ISysUserDao userDao;
 
+    @Override
     public List<SysUserModel> searchListByPage() {
-
         return userDao.selectAll();
     }
 }
