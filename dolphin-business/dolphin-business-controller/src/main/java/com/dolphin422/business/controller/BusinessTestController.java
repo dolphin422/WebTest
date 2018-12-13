@@ -2,6 +2,7 @@ package com.dolphin422.business.controller;
 
 import com.dolphin422.common.base.BaseController;
 import com.dolphin422.common.util.UUIDGenerator;
+import com.dolphin422.common.vo.returndata.ReturnVo;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -20,4 +21,14 @@ public class BusinessTestController extends BaseController {
     public String sayHello(String name) {
         return "Hello " + name+", Your business uuid is " + UUIDGenerator.getUUID();
     }
+
+
+    @RequestMapping("/test")
+    @ResponseBody
+    public ReturnVo sayReturnVo(String name) {
+        return ReturnVo.successVo(name);
+    }
+
+
+
 }

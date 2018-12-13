@@ -6,4 +6,5 @@ package com.dolphin422.common.base;
  * @createDate: 2018.12.09 16:08
  */
 public class BaseController {
+
 }
