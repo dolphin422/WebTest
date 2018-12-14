@@ -30,10 +30,10 @@ Spring Boot Maven Web
 ---- | ---- 
 SpringBoot|2.1.0.RELEASE
 JDK|1.8|
-MySQL JDBC|5.1.30
+MySQL JDBC|5.1.38
 Mybatis|1.3.1|
 druid|1.1.10|
-tk.mapper|2.0.2|
+tk.mapper|1.2.3|
 MybatisGenerator|1.3.5|
 
 
