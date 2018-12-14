@@ -1,11 +1,13 @@
 package com.dolphin422.common.base;
 
+import org.apache.commons.lang3.StringUtils;
+
 /**
  * @Description: 自定义异常类基类
  * @author: DamonJT WIN
  * @createDate: 2018.12.11 0:11
  */
-public abstract   class BaseException extends RuntimeException {
+public abstract class BaseException extends RuntimeException {
     private static final long serialVersionUID = -2931700230560392933L;
 
     /**
@@ -29,7 +31,7 @@ public abstract   class BaseException extends RuntimeException {
      * @param throwable     the throwable
      */
     protected BaseException(Enum<? extends IBaseStatusCodeEnum> exceptionCode,
-        Throwable throwable) {
+                            Throwable throwable) {
         super(throwable);
         this.exceptionCode = exceptionCode;
     }
@@ -41,7 +43,7 @@ public abstract   class BaseException extends RuntimeException {
      * @param message       the message
      */
     protected BaseException(Enum<? extends IBaseStatusCodeEnum> exceptionCode,
-        String message) {
+                            String message) {
         super(message);
         this.exceptionCode = exceptionCode;
     }
@@ -54,7 +56,7 @@ public abstract   class BaseException extends RuntimeException {
      * @param args          the args
      */
     protected BaseException(Enum<? extends IBaseStatusCodeEnum> exceptionCode,
-        String message, Object... args) {
+                            String message, Object... args) {
         super(rebuildMessage(message, args));
         this.exceptionCode = exceptionCode;
     }
@@ -67,7 +69,7 @@ public abstract   class BaseException extends RuntimeException {
      * @param message       the message
      */
     protected BaseException(Enum<? extends IBaseStatusCodeEnum> exceptionCode,
-        Throwable throwable, String message) {
+                            Throwable throwable, String message) {
         super(message, throwable);
         this.exceptionCode = exceptionCode;
     }
@@ -81,7 +83,7 @@ public abstract   class BaseException extends RuntimeException {
      * @param args          the args
      */
     protected BaseException(Enum<? extends IBaseStatusCodeEnum> exceptionCode,
-        Throwable throwable, String message, Object... args) {
+                            Throwable throwable, String message, Object... args) {
         super(rebuildMessage(message, args), throwable);
         this.exceptionCode = exceptionCode;
     }
@@ -89,7 +91,7 @@ public abstract   class BaseException extends RuntimeException {
     /**
      * @return exceptionCode
      */
-    protected abstract Enum<? extends IBaseStatusCodeEnum> getExceptionCode() ;
+    protected abstract Enum<? extends IBaseStatusCodeEnum> getExceptionCode();
 
     /**
      * @param exceptionCode exceptionCode
@@ -114,13 +116,15 @@ public abstract   class BaseException extends RuntimeException {
      * @return string
      */
     private static String rebuildMessage(String sourceMsg, Object... args) {
-
+        if (StringUtils.isEmpty(sourceMsg)) {
+            return null;
+        }
         if (null != args && args.length > 0) {
             for (Object arg : args) {
                 int index = sourceMsg.indexOf("{}");
                 if (index >= 0) {
                     sourceMsg = sourceMsg.substring(0, index) + arg.toString() +
-                        sourceMsg.substring(index + 2);
+                            sourceMsg.substring(index + 2);
                 } else {
                     break;
                 }

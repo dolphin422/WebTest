@@ -30,6 +30,7 @@
         <springboot.version>2.1.0.RELEASE</springboot.version>
         <!--mysql-->
         <mysql.connector.version>5.1.38</mysql.connector.version>
+        <commons.lang3.version>3.3.2</commons.lang3.version>
 
         <mapper.plugin>tk.mybatis.mapper.generator.MapperPlugin</mapper.plugin>
         <mapper.Mapper>tk.mybatis.mapper.common.Mapper</mapper.Mapper>
@@ -98,6 +99,11 @@
                 <groupId>com.google.code.gson</groupId>
                 <artifactId>gson</artifactId>
                 <version>${gson.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-lang3</artifactId>
+                <version>${commons.lang3.version}</version>
             </dependency>
 
         </dependencies>
