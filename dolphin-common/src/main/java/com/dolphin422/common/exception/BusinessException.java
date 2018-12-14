@@ -1,29 +1,41 @@
 package com.dolphin422.common.exception;
 
+import com.dolphin422.common.base.BaseException;
+import com.dolphin422.common.enumeration.statuscode.business.BusinessStatusCodeEnum;
+
 /**
  * @Description: 自定义业务异常类
  * @author: DamonJT WIN
  * @createDate: 2018.12.11 0:12
  */
-public class CustomBusinessException extends BaseCustomException {
+public class BusinessException extends BaseException {
+
     private static final long serialVersionUID = 2203764194341374713L;
+
+    /**
+     * @return exceptionCode
+     */
+    @Override
+    public BusinessStatusCodeEnum getExceptionCode() {
+        return (BusinessStatusCodeEnum) super.exceptionCode;
+    }
 
     /**
      * 构造函数
      *
-     * @param exceptionDesc the exception description
+     * @param exceptionDesc the system description
      */
-    public CustomBusinessException(Enum<? extends IExceptionStatusEnum> exceptionDesc) {
+    public BusinessException(BusinessStatusCodeEnum exceptionDesc) {
         super(exceptionDesc);
     }
 
     /**
      * 构造函数
      *
-     * @param exceptionDesc the exception description
-     * @param exception     the exception
+     * @param exceptionDesc the system description
+     * @param exception     the system
      */
-    public CustomBusinessException(Enum<? extends IExceptionStatusEnum> exceptionDesc,
+    public BusinessException(BusinessStatusCodeEnum exceptionDesc,
         Throwable exception) {
         super(exceptionDesc, exception);
     }
@@ -31,10 +43,10 @@ public class CustomBusinessException extends BaseCustomException {
     /**
      * 构造函数
      *
-     * @param exceptionDesc the exception description
+     * @param exceptionDesc the system description
      * @param message       the message
      */
-    public CustomBusinessException(Enum<? extends IExceptionStatusEnum> exceptionDesc,
+    public BusinessException(BusinessStatusCodeEnum exceptionDesc,
         String message) {
         super(exceptionDesc, message);
     }
@@ -42,11 +54,11 @@ public class CustomBusinessException extends BaseCustomException {
     /**
      * 构造函数
      *
-     * @param exceptionDesc the exception description
+     * @param exceptionDesc the system description
      * @param message       the message
      * @param args          the args
      */
-    public CustomBusinessException(Enum<? extends IExceptionStatusEnum> exceptionDesc,
+    public BusinessException(BusinessStatusCodeEnum exceptionDesc,
         String message, Object... args) {
         super(exceptionDesc, message, args);
     }
@@ -54,11 +66,11 @@ public class CustomBusinessException extends BaseCustomException {
     /**
      * 构造函数
      *
-     * @param exceptionDesc the exception description
-     * @param exception     the exception
+     * @param exceptionDesc the system description
+     * @param exception     the system
      * @param message       the message
      */
-    public CustomBusinessException(Enum<? extends IExceptionStatusEnum> exceptionDesc,
+    public BusinessException(BusinessStatusCodeEnum exceptionDesc,
         Throwable exception, String message) {
         super(exceptionDesc, exception, message);
     }
@@ -66,13 +78,14 @@ public class CustomBusinessException extends BaseCustomException {
     /**
      * 构造函数
      *
-     * @param exceptionDesc the exception description
-     * @param exception     the exception
+     * @param exceptionDesc the system description
+     * @param exception     the system
      * @param message       the message
      * @param args          the args
      */
-    public CustomBusinessException(Enum<? extends IExceptionStatusEnum> exceptionDesc,
+    public BusinessException(BusinessStatusCodeEnum exceptionDesc,
         Throwable exception, String message, Object... args) {
         super(exceptionDesc, exception, message, args);
     }
+
 }

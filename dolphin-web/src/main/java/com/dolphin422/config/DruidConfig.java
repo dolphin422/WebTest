@@ -19,7 +19,7 @@ import org.springframework.stereotype.Component;
  * @createDate: 2018.11.28 11:32
  */
 @Configuration
-public class DruidConfiguration {
+public class DruidConfig {
 
     //private static final Logger logger = LoggerFactory.getLogger(DruidConfiguration.class);
 

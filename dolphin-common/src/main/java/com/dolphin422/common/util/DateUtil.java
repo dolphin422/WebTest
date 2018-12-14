@@ -9,7 +9,7 @@ public class DateUtil {
 
     /**
      * 时间格式
-     * 日期 yyyy-MM-dd
+     * 日期时间 yyyy-MM-dd HH:mm:ss
      */
-    public static final String FORMAT_YYYY_MM_DD = "yyyy-MM-dd";
+    public static final String FORMAT_DATE_TIME = "yyyy-MM-dd HH:mm:ss";
 }

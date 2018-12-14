@@ -1,11 +1,13 @@
-package com.dolphin422.common.enumeration.statuscode;
+package com.dolphin422.common.enumeration.statuscode.http;
+
+import com.dolphin422.common.base.IBaseStatusCodeEnum;
 
 /**
  * @Description:  HTTP状态码枚举
  * @author:
  * @createDate: 2018.12.12 0:49
  */
-public enum HttpStatusEnum {
+public enum HttpStatusEnum implements IBaseStatusCodeEnum {
 
     CONTINUE(100, "Continue", "请继续发送请求的剩余部分"),
     SWITCHING_PROTOCOLS(101, "Switching Protocols", "协议切换"),
@@ -66,6 +68,16 @@ public enum HttpStatusEnum {
     BANDWIDTH_LIMIT_EXCEEDED(509, "Bandwidth Limit Exceeded", "服务器达到带宽限制"),
     NOT_EXTENDED(510, "Not Extended", "获取资源所需的策略没有被满足"),
     NETWORK_AUTHENTICATION_REQUIRED(511, "Network Authentication Required", "需要进行网络授权");
+
+    @Override
+    public String getStatusCode() {
+        return String.valueOf(code);
+    }
+
+    @Override
+    public String getDescription() {
+        return reasonPhraseCN;
+    }
 
     private final int code;
 
@@ -130,4 +142,6 @@ public enum HttpStatusEnum {
     private int type() {
         return (int) code / 100;
     }
+
+
 }

@@ -1,7 +1,8 @@
-package com.dolphin422.common.vo.returndata;
+package com.dolphin422.common.returndata;
 
 import com.dolphin422.common.base.BaseVo;
-import com.dolphin422.common.enumeration.statuscode.StatusCodeEnum;
+import com.dolphin422.common.enumeration.statuscode.business.BusinessStatusCodeEnum;
+import com.dolphin422.common.base.IBaseStatusCodeEnum;
 import com.dolphin422.common.util.DateUtil;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -44,31 +45,32 @@ public class ReturnVo<T> extends BaseVo {
      * @return ReturnVo statusCode :200 message : 操作成功
      */
     public static ReturnVo<String> successVo() {
-        return new ReturnVo<String>(StatusCodeEnum.SUCCESS.getStatusCode(),
-            StatusCodeEnum.SUCCESS.getDescription());
+        return new ReturnVo<String>(BusinessStatusCodeEnum.SUCCESS.getStatusCode(),
+            BusinessStatusCodeEnum.SUCCESS.getDescription());
     }
 
     /**
      * 失败状态 ReturnVo
-     * Enum<? extends ICustomStatusEnum> customStatusEnum
+     * Enum<? extends IExceptionStatusEnum> customStatusEnum
      *
      * @return ReturnVo statusCode :600 message : 操作失败
      */
-    public static ReturnVo<String> failVo(StatusCodeEnum customStatusEnum) {
+    public static <T extends IBaseStatusCodeEnum> ReturnVo<String> failVo(T customStatusEnum) {
         return new ReturnVo<String>(customStatusEnum.getStatusCode(), customStatusEnum.getDescription());
     }
 
     /**
      * 成功状态 ReturnVo
      * 返回 业务数据(转化为JSON格式字符串)
-     * 其中的日期格式为:yyyy-MM-dd,若业务数据本身为String 不转化
+     * 日期时间格式为:yyyy-MM-dd HH:mm:ss
+     * 若业务数据本身为String 不转化
      *
      * @param data 业务数据
      * @return ReturnVo statusCode :200,message : 操作成功 ,data:JSON格式业务数据
      */
     public static ReturnVo<String> successVo(Object data) {
-        ReturnVo<String> jsonDataReturnVo = new ReturnVo<String>(StatusCodeEnum.SUCCESS.getStatusCode(),
-            StatusCodeEnum.SUCCESS.getDescription());
+        ReturnVo<String> jsonDataReturnVo = new ReturnVo<String>(BusinessStatusCodeEnum.SUCCESS.getStatusCode(),
+            BusinessStatusCodeEnum.SUCCESS.getDescription());
         if (null == data) {
             return jsonDataReturnVo;
         }
@@ -76,7 +78,7 @@ public class ReturnVo<T> extends BaseVo {
             jsonDataReturnVo.setData((String) data);
             return jsonDataReturnVo;
         }
-        Gson gsonSource = new GsonBuilder().setDateFormat(DateUtil.FORMAT_YYYY_MM_DD).create();
+        Gson gsonSource = new GsonBuilder().setDateFormat(DateUtil.FORMAT_DATE_TIME).create();
         String dataJson = gsonSource.toJson(data);
         jsonDataReturnVo.setData(dataJson);
         return jsonDataReturnVo;
@@ -128,6 +130,7 @@ public class ReturnVo<T> extends BaseVo {
 
     /**
      * 信息  公有
+     *
      * @param message 信息
      */
     public void setMessage(String message) {

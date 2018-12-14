@@ -1,17 +1,26 @@
-package com.dolphin422.common.enumeration.statuscode;
+package com.dolphin422.common.enumeration.statuscode.business;
 
-import com.dolphin422.common.exception.IExceptionStatusEnum;
+import com.dolphin422.common.base.IBaseStatusCodeEnum;
 
 /**
  * @Description: 状态码枚举类
  * @author: DamonJT WIN
  * @createDate: 2018.12.11 23:39
  */
-public enum StatusCodeEnum implements IExceptionStatusEnum {
+public enum BusinessStatusCodeEnum implements IBaseStatusCodeEnum {
 
-    SUCCESS("200", "操作成功"),
-    FAILURE("600", "操作失败"),
-    LACK_ARGUMENT("450", "缺少参数");
+    SUCCESS("200", "操作成功") {},
+    FAILURE("600", "操作失败") {};
+
+    @Override
+    public String getStatusCode() {
+        return statusCode;
+    }
+
+    @Override
+    public String getDescription() {
+        return description;
+    }
 
     /**
      * 状态码
@@ -26,24 +35,16 @@ public enum StatusCodeEnum implements IExceptionStatusEnum {
     /**
      * 构造方法
      *
-     * @param statusCode 状态码
-     * @param description    信息
+     * @param statusCode  状态码
+     * @param description 信息
      */
-    StatusCodeEnum(String statusCode, String description) {
+    BusinessStatusCodeEnum(String statusCode, String description) {
         this.statusCode = statusCode;
         this.description = description;
     }
 
-    public String getStatusCode() {
-        return statusCode;
-    }
-
     public void setStatusCode(String statusCode) {
         this.statusCode = statusCode;
-    }
-
-    public String getDescription() {
-        return description;
     }
 
     public void setDescription(String description) {
@@ -57,7 +58,7 @@ public enum StatusCodeEnum implements IExceptionStatusEnum {
      */
     @Override
     public String toString() {
-        return this.statusCode + ":" + this.description;
+        return "[" + this.statusCode + ":" + this.description + "]";
     }
 
 }
