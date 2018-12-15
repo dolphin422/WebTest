@@ -30,6 +30,7 @@
         <springboot.version>2.1.0.RELEASE</springboot.version>
         <!--mysql-->
         <mysql.connector.version>5.1.38</mysql.connector.version>
+        <commons.lang3.version>3.3.2</commons.lang3.version>
 
         <mapper.plugin>tk.mybatis.mapper.generator.MapperPlugin</mapper.plugin>
         <mapper.Mapper>tk.mybatis.mapper.common.Mapper</mapper.Mapper>
@@ -37,6 +38,8 @@
         <generator.version>1.3.5</generator.version>
         <mybatis.version>1.3.1</mybatis.version>
         <druid.version>1.1.10</druid.version>
+        <gson.version>2.8.0</gson.version>
+        <maven.compiler.version>3.7.0</maven.compiler.version>
     </properties>
 
     <!--管理依赖jar包-->
@@ -82,15 +85,27 @@
                 <version>${druid.version}</version>
             </dependency>
             <dependency>
-                <groupId>tk.mybatis</groupId>
-                <artifactId>mapper-spring-boot-starter</artifactId>
-                <version>${tk.mapper.version}</version>
-            </dependency>
-            <dependency>
                 <groupId>mysql</groupId>
                 <artifactId>mysql-connector-java</artifactId>
                 <version>${mysql.connector.version}</version>
             </dependency>
+            <dependency>
+                <groupId>tk.mybatis</groupId>
+                <artifactId>mapper-spring-boot-starter</artifactId>
+                <version>${tk.mapper.version}</version>
+            </dependency>
+            <!--google json-->
+            <dependency>
+                <groupId>com.google.code.gson</groupId>
+                <artifactId>gson</artifactId>
+                <version>${gson.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-lang3</artifactId>
+                <version>${commons.lang3.version}</version>
+            </dependency>
+
         </dependencies>
     </dependencyManagement>
 
@@ -105,6 +120,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
+                <version>${maven.compiler.version}</version>
                 <configuration>
                     <source>${java.version}</source>
                     <target>${java.version}</target>
