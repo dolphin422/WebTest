@@ -1,6 +1,7 @@
 package com.dolphin422.common.base;
 
-import org.apache.commons.lang3.StringUtils;
+
+import org.springframework.util.StringUtils;
 
 /**
  * @Description: 自定义异常类基类

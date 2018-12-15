@@ -14,8 +14,7 @@
         <module>dolphin-business-service-api</module>
         <module>dolphin-business-service-impl</module>
         <module>dolphin-business-dao-api</module>
-        <module>dolphin-business-dao-mysql</module>
-        <module>dolphin-business-dao-oracle</module>
+        <module>dolphin-business-dao-impl</module>
         <module>dolphin-business-model</module>
     </modules>
 
