@@ -10,7 +10,10 @@ import com.dolphin422.common.base.IBaseStatusCodeEnum;
 public enum BusinessStatusCodeEnum implements IBaseStatusCodeEnum {
 
     SUCCESS("200", "操作成功") {},
-    FAILURE("600", "操作失败") {};
+    FAILURE("600", "操作失败") {},
+    ARGUEMENT_NULL("400","参数为空") {}
+    ;
+
 
     @Override
     public String getStatusCode() {
