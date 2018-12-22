@@ -11,7 +11,8 @@ public enum BusinessStatusCodeEnum implements IBaseStatusCodeEnum {
 
     SUCCESS("200", "操作成功") {},
     FAILURE("600", "操作失败") {},
-    ARGUEMENT_NULL("400","参数为空") {}
+    ARGUMENT_NULL("450","参数为空") {},
+    ILLEGAL_ARGUMENT("451","非法参数") {}
     ;
 
 
