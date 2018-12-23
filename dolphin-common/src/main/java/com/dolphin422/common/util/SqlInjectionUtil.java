@@ -17,9 +17,13 @@ import java.util.regex.Pattern;
 public class SqlInjectionUtil {
 
     private static Logger logger = LoggerFactory.getLogger(SqlInjectionUtil.class);
-
+    /**
+     * 过滤规则
+     * ../ 防止路径遍历
+     * 英文单词为 Sql关键字
+     */
     private static final String REG =
-            "<|>|'|\\.\\./|(\\b" + "(union|insert|select|delete|update|drop|alter|truncate|declare|xp_)\\b)";
+            "\\.\\./|(\\b" + "(union|insert|select|delete|update|drop|alter|truncate|declare|xp_)\\b)";
 
     private static final Pattern SQL_PATTERN = Pattern.compile(REG, Pattern.CASE_INSENSITIVE);
 
@@ -32,8 +36,8 @@ public class SqlInjectionUtil {
         str = str.toLowerCase().trim();
         Matcher matcher = SQL_PATTERN.matcher(str);
         if (matcher.find()) {
-            logger.debug("未能通过校验的字符为---->:{}", matcher.group(0));
-            logger.debug("传入的原始字符串为---->:{}", str);
+            logger.debug("未能通过校验的字符为---->({})", matcher.group(0));
+            logger.debug("传入的原始字符串为---->({})", str);
             throw new BusinessException(BusinessStatusCodeEnum.ILLEGAL_ARGUMENT,
                     "所提交内容含有未通过校验字符,请检查。该字符为：{}", matcher.group(0));
         }

@@ -2,6 +2,7 @@ package com.dolphin422.common.filter;
 
 import com.dolphin422.common.exception.BusinessException;
 import com.dolphin422.common.util.SqlInjectionUtil;
+import org.apache.commons.lang3.StringEscapeUtils;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletRequestWrapper;
@@ -89,7 +90,7 @@ public class XssHttpServletRequestWrapper extends HttpServletRequestWrapper {
         String emptyStr = "";
         String lineBreak = "\r|\n";
         str = str.replaceAll(lineBreak, emptyStr);
-        return this.xssClean(str);
+        return this.xssCleanSqlCheck(str);
     }
 
     /**
@@ -100,9 +101,9 @@ public class XssHttpServletRequestWrapper extends HttpServletRequestWrapper {
      * @throws BusinessException
      */
     private String xssCleanSqlCheck(String paramStr) throws BusinessException {
-        paramStr = this.xssClean(paramStr);
+        //paramStr = this.xssClean(paramStr);
         //paramStr = HtmlUtils.htmlEscape(paramStr);
-        //paramStr = StringEscapeUtils.escapeHtml4(paramStr);
+        paramStr = StringEscapeUtils.escapeHtml4(paramStr);
         SqlInjectionUtil.checkSQLInjection(paramStr);
         return paramStr;
     }
