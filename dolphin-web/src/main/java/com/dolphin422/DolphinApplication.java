@@ -12,6 +12,8 @@ import tk.mybatis.spring.annotation.MapperScan;
 public class DolphinApplication extends SpringBootServletInitializer {
 
     public static void main(String[] args) {
+
+        //TimeZone.setDefault(TimeZone.getTimeZone("Asia/Shanghai"));
         SpringApplication.run(DolphinApplication.class, args);
     }
 

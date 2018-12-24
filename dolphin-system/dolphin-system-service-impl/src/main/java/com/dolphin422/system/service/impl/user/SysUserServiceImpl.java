@@ -6,6 +6,8 @@ import com.dolphin422.common.exception.BusinessException;
 import com.dolphin422.system.dao.user.ISysUserDao;
 import com.dolphin422.system.model.user.SysUserModel;
 import com.dolphin422.system.service.api.user.ISysUserService;
+
+import java.util.Date;
 import java.util.List;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
@@ -32,7 +34,12 @@ public class SysUserServiceImpl extends BaseServiceImpl implements ISysUserServi
 
     @Override
     public List<SysUserModel> searchListByPage() throws BusinessException {
-        return userDao.selectAll();
+        List<SysUserModel> sysUserModelList = userDao.selectAll();
+        SysUserModel sysUserModel = new SysUserModel();
+        sysUserModel.setId("3");
+        sysUserModel.setGmtCreate(new Date());
+        sysUserModelList.add(sysUserModel);
+        return sysUserModelList;
     }
 
     @Override
