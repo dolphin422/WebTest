@@ -2,7 +2,7 @@ package com.dolphin422.system.restcontroller;
 
 import com.dolphin422.common.base.BaseController;
 import com.dolphin422.common.exception.BusinessException;
-import com.dolphin422.common.returndata.ReturnVo;
+import com.dolphin422.common.returnvo.ReturnVo;
 import com.dolphin422.system.model.user.SysUserModel;
 import com.dolphin422.system.service.api.user.ISysUserService;
 import io.swagger.annotations.ApiOperation;

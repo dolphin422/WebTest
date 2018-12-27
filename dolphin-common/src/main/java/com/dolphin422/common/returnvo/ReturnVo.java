@@ -1,4 +1,4 @@
-package com.dolphin422.common.returndata;
+package com.dolphin422.common.returnvo;
 
 import com.dolphin422.common.base.BaseVo;
 import com.dolphin422.common.enumeration.statuscode.business.BusinessStatusCodeEnum;
@@ -93,7 +93,8 @@ public class ReturnVo<T> extends BaseVo {
      * @return ReturnVo statusCode :200,message : 操作成功 , data:原始业务数据
      */
     public static <T> ReturnVo<T> successVoWithOriginalData(T data) {
-        ReturnVo<T> originalDataReturnVo = new ReturnVo<T>();
+        ReturnVo<T> originalDataReturnVo = new ReturnVo<T>(BusinessStatusCodeEnum.SUCCESS.getStatusCode(),
+                BusinessStatusCodeEnum.SUCCESS.getDescription());
         originalDataReturnVo.setData(data);
         return originalDataReturnVo;
     }

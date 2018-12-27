@@ -6,7 +6,7 @@ import com.dolphin422.common.enumeration.statuscode.system.SystemExceptionCodeEn
 import com.dolphin422.common.exception.BusinessException;
 import com.dolphin422.common.exception.SystemException;
 import com.dolphin422.common.util.UUIDGenerator;
-import com.dolphin422.common.returndata.ReturnVo;
+import com.dolphin422.common.returnvo.ReturnVo;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;

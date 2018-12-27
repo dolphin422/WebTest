@@ -23,4 +23,5 @@ public class SystemTestController extends BaseController {
 
         return "Hello " + name+", Now is "+new Date()+"Your system uuid is " + UUIDGenerator.getUUID();
     }
+
 }
