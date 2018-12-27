@@ -61,5 +61,12 @@ public class SysUserController extends BaseController {
         return returnVo;
     }
 
+    @RequestMapping("/list")
+    @ResponseBody
+    public ReturnVo showUserList() {
+        List<SysUserModel> userModelList = sysUserService.searchListByPage();
+        return ReturnVo.successVoWithOriginalData(userModelList);
+    }
+
 
 }
