@@ -69,7 +69,8 @@ public class ReturnVo<T> extends BaseVo {
      * @return ReturnVo statusCode :200,message : 操作成功 ,data:JSON格式业务数据
      */
     public static ReturnVo<String> successVo(Object data) {
-        ReturnVo<String> jsonDataReturnVo = new ReturnVo<String>(BusinessStatusCodeEnum.SUCCESS.getStatusCode(),
+        ReturnVo<String> jsonDataReturnVo = new ReturnVo<String>(
+            BusinessStatusCodeEnum.SUCCESS.getStatusCode(),
             BusinessStatusCodeEnum.SUCCESS.getDescription());
         if (null == data) {
             return jsonDataReturnVo;
@@ -93,7 +94,8 @@ public class ReturnVo<T> extends BaseVo {
      * @return ReturnVo statusCode :200,message : 操作成功 , data:原始业务数据
      */
     public static <T> ReturnVo<T> successVoWithOriginalData(T data) {
-        ReturnVo<T> originalDataReturnVo = new ReturnVo<T>();
+        ReturnVo<T> originalDataReturnVo = new ReturnVo<T>(BusinessStatusCodeEnum.SUCCESS.getStatusCode(),
+            BusinessStatusCodeEnum.SUCCESS.getDescription());
         originalDataReturnVo.setData(data);
         return originalDataReturnVo;
     }

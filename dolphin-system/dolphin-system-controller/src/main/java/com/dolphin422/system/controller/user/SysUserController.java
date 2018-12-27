@@ -1,6 +1,7 @@
 package com.dolphin422.system.controller.user;
 
 import com.dolphin422.common.base.BaseController;
+import com.dolphin422.common.returndata.ReturnVo;
 import com.dolphin422.system.model.user.SysUserModel;
 import com.dolphin422.system.service.api.user.ISysUserService;
 import org.slf4j.Logger;
@@ -31,13 +32,14 @@ public class SysUserController extends BaseController {
     @RequestMapping("/showDataByPage")
     @ResponseBody
     public List<SysUserModel> showDataByPage() {
-        logger.trace("--trace----select start------");
-        logger.debug("--debug----select start------");
-        logger.info("--info----select start------");
-        logger.warn("--warn----select start------");
-        logger.error("--error----select start------");
         List<SysUserModel> userModelList = sysUserService.searchListByPage();
-        logger.debug("------select end ------");
         return userModelList;
     }
+    @RequestMapping("/list")
+    @ResponseBody
+    public ReturnVo showUserList() {
+        List<SysUserModel> userModelList = sysUserService.searchListByPage();
+        return ReturnVo.successVoWithOriginalData(userModelList);
+    }
+
 }
