@@ -79,7 +79,7 @@ public class ReturnVo<T> extends BaseVo {
             jsonDataReturnVo.setData((String) data);
             return jsonDataReturnVo;
         }
-        Gson gsonSource = new GsonBuilder().setDateFormat(DateUtil.FORMAT_DATE_TIME).create();
+        Gson gsonSource = new GsonBuilder().setDateFormat(DateUtil.DEFAULT_FORMAT_DATE_TIME).create();
         String dataJson = gsonSource.toJson(data);
         jsonDataReturnVo.setData(dataJson);
         return jsonDataReturnVo;

@@ -1,6 +1,7 @@
 package com.dolphin422.config;
 
 import com.dolphin422.common.util.DateUtil;
+import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -24,9 +25,9 @@ public class WebMvcConfig {
     public HttpMessageConverters customConverters() {
         Collection<HttpMessageConverter<?>> messageConverters = new ArrayList<>();
         GsonHttpMessageConverter gsonHttpMessageConverter = new GsonHttpMessageConverter();
-        gsonHttpMessageConverter.setGson(new GsonBuilder().setDateFormat(DateUtil.FORMAT_DATE_TIME).create());
-        gsonHttpMessageConverter.setSupportedMediaTypes(Arrays
-            .asList(MediaType.APPLICATION_JSON));
+        Gson gson = new GsonBuilder().setDateFormat(DateUtil.DEFAULT_FORMAT_DATE_TIME).create();
+        gsonHttpMessageConverter.setGson(gson);
+        gsonHttpMessageConverter.setSupportedMediaTypes(Arrays.asList(MediaType.APPLICATION_JSON));
         messageConverters.add(gsonHttpMessageConverter);
         return new HttpMessageConverters(true, messageConverters);
     }
