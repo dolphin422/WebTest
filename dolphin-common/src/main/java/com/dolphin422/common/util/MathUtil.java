@@ -363,13 +363,14 @@ public class MathUtil {
     }
 
     /**
-     * 比较大小 如果v1 大于v2 则 返回true 否则false
+     * 比较大小  大于
+     * 如果v1 大于v2 则 返回true 否则false
      *
      * @param v1 the v 1
      * @param v2 the v 2
      * @return boolean boolean
      */
-    public static boolean compareStr(String v1, String v2) {
+    public static boolean greaterStr(String v1, String v2) {
         BigDecimal b1 = new BigDecimal(v1);
         BigDecimal b2 = new BigDecimal(v2);
         int bj = b1.compareTo(b2);
@@ -377,16 +378,32 @@ public class MathUtil {
     }
 
     /**
-     * 比较大小 如果v1 等于v2 则 返回true 否则false
+     * 比较大小  等于
+     * 如果v1 等于v2 则 返回true 否则false
      *
      * @param v1 the v 1
      * @param v2 the v 2
      * @return boolean boolean
      */
-    public static boolean equalsStr(String v1, String v2) {
+    public static boolean equalStr(String v1, String v2) {
         BigDecimal b1 = new BigDecimal(v1);
         BigDecimal b2 = new BigDecimal(v2);
         int bj = b1.compareTo(b2);
         return bj == 0;
+    }
+
+    /**
+     * 比较大小  大于等于
+     * 如果v1 大于等于v2 则 返回true 否则false
+     *
+     * @param v1 the v 1
+     * @param v2 the v 2
+     * @return boolean boolean
+     */
+    public static boolean greaterEqualStr(String v1, String v2) {
+        BigDecimal b1 = new BigDecimal(v1);
+        BigDecimal b2 = new BigDecimal(v2);
+        int bj = b1.compareTo(b2);
+        return bj >= 0;
     }
 }
