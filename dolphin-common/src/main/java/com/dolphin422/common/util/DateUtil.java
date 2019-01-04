@@ -9,8 +9,10 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.Period;
 import java.time.ZoneId;
+import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
+import java.time.temporal.TemporalAccessor;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -68,7 +70,7 @@ public class DateUtil {
      */
     public static String getCurrentDateTime() {
         LocalDateTime now = LocalDateTime.now();
-        return formatter(now, DEFAULT_FORMAT_DATE_TIME);
+        return formatterLdt(now, DEFAULT_FORMAT_DATE_TIME);
     }
 
     /**
@@ -78,8 +80,8 @@ public class DateUtil {
      * @return 当前系统日期的字符串 "yyyy-MM-dd"
      */
     public static String getCurrentDate() {
-        LocalDateTime now = LocalDateTime.now();
-        return formatter(now, DEFAULT_FORMAT_DATE);
+        LocalDate now = LocalDate.now();
+        return formatterLdt(now, DEFAULT_FORMAT_DATE);
     }
 
     /**
@@ -89,24 +91,41 @@ public class DateUtil {
      * @return 当前系统时间的格式字符串
      */
     public static String getCurrentTime() {
-        LocalDateTime now = LocalDateTime.now();
-        return formatter(now, DEFAULT_FORMAT_TIME);
+        LocalTime now = LocalTime.now();
+        return formatterLdt(now, DEFAULT_FORMAT_TIME);
     }
 
     /**
-     * 得到当前系统时间
+     * 当前系统日期时间
      *
-     * @return 当前时间的格式字符串
-     * @throws ParseException
+     * @return java.util.Date
      */
-    public static Date getCurrentDateAndTime() {
-        Date date = null;
-        try {
-            date = parseDate(getCurrentDateTime(), DEFAULT_FORMAT_DATE_TIME);
-        } catch (ParseException px) {
-            px.printStackTrace();
-        }
-        return date;
+    public static Date currentDateTime() {
+        return localDateTime2Date(LocalDateTime.now());
+    }
+
+    /**
+     * java.util.Date 转换为 java.time.LocalDateTime
+     *
+     * @param date java.util.Date
+     * @return LocalDateTime
+     */
+    public static LocalDateTime date2LocalDateTime(Date date) {
+        Instant instant = date.toInstant();
+        ZoneId zoneId = ZoneId.systemDefault();
+        return instant.atZone(zoneId).toLocalDateTime();
+    }
+
+    /**
+     * java.time.LocalDateTime 转换为 java.util.Date
+     *
+     * @param localDateTime java.time.LocalDateTime
+     * @return java.util.Date
+     */
+    public static Date localDateTime2Date(LocalDateTime localDateTime) {
+        ZoneId zoneId = ZoneId.systemDefault();
+        ZonedDateTime zdt = localDateTime.atZone(zoneId);
+        return Date.from(zdt.toInstant());
     }
 
     /**
@@ -494,12 +513,12 @@ public class DateUtil {
     /**
      * 日周期格式化
      *
-     * @param localDateTime
+     * @param temporalAccessor
      * @param formatStyle
      * @return
      */
-    public static String formatter(LocalDateTime localDateTime, String formatStyle) {
-        return DateTimeFormatter.ofPattern(formatStyle).format(localDateTime);
+    public static String formatterLdt(TemporalAccessor temporalAccessor, String formatStyle) {
+        return DateTimeFormatter.ofPattern(formatStyle).format(temporalAccessor);
     }
 
     /**
@@ -610,52 +629,33 @@ public class DateUtil {
     }
 
     /**
-     * 日期加减
+     * 传入日期 日期加减
      *
      * @param num  数量
      * @param unit 单位
      * @return LocalDate 增加后的日期
      */
     @SuppressWarnings("static-access")
-    public static LocalDate addLocalDate(long num, ChronoUnit unit) {
+    public static LocalDate addLocalDate(LocalDate localDate, ChronoUnit unit, long num) {
         LocalDate resultDate;
         if (num > 0) {
-            resultDate = LocalDate.now().plus(num, unit);
+            resultDate = localDate.plus(num, unit);
         } else {
-            resultDate = LocalDate.now().minus(Math.abs(num), unit);
+            resultDate = localDate.minus(Math.abs(num), unit);
         }
         return resultDate;
     }
 
     /**
-     * 日期时分秒加
-     *
-     * @param num           数量
-     * @param unit          单位
-     * @param localDateTime 原日期
-     * @return LocalDateTime 增加后的日期
-     */
-    @SuppressWarnings("static-access")
-    public static LocalDateTime addLocalDateTime(long num, ChronoUnit unit, LocalDateTime localDateTime) {
-        LocalDateTime resultDateTime;
-        if (num > 0) {
-            resultDateTime = localDateTime.plus(num, unit);
-        } else {
-            resultDateTime = localDateTime.minus(Math.abs(num), unit);
-        }
-        return resultDateTime;
-    }
-
-    /**
-     * 时分秒加减
+     * 传入时间 时分秒加减
      *
      * @param num       数量
      * @param unit      单位
-     * @param localTime 原日期
-     * @return LocalDateTime 增加后的日期
+     * @param localTime 原时间
+     * @return LocalDateTime 增加后的时间
      */
     @SuppressWarnings("static-access")
-    public static LocalTime addLocalTime(long num, ChronoUnit unit, LocalTime localTime) {
+    public static LocalTime addLocalTime(LocalTime localTime, ChronoUnit unit, long num) {
         LocalTime resultTime;
         if (num > 0) {
             resultTime = localTime.plus(num, unit);
@@ -663,6 +663,25 @@ public class DateUtil {
             resultTime = localTime.minus(Math.abs(num), unit);
         }
         return resultTime;
+    }
+
+    /**
+     * 传入日期时间  日期时间加减
+     *
+     * @param num           数量
+     * @param unit          单位
+     * @param localDateTime 原日期
+     * @return LocalDateTime 增加后的日期
+     */
+    @SuppressWarnings("static-access")
+    public static LocalDateTime addLocalDateTime(LocalDateTime localDateTime, ChronoUnit unit, long num) {
+        LocalDateTime resultDateTime;
+        if (num > 0) {
+            resultDateTime = localDateTime.plus(num, unit);
+        } else {
+            resultDateTime = localDateTime.minus(Math.abs(num), unit);
+        }
+        return resultDateTime;
     }
 
 }

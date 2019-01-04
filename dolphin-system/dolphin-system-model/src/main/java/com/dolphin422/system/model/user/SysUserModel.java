@@ -1,7 +1,11 @@
 package com.dolphin422.system.model.user;
 
 import java.util.Date;
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Table(name = "sys_user")
 public class SysUserModel {
