@@ -2,7 +2,7 @@ package com.dolphin422.system.restcontroller;
 
 import com.dolphin422.common.base.BaseController;
 import com.dolphin422.common.exception.BusinessException;
-import com.dolphin422.common.returndata.ReturnVo;
+import com.dolphin422.common.returnvo.ReturnVo;
 import com.dolphin422.system.model.user.SysUserModel;
 import com.dolphin422.system.service.api.user.ISysUserService;
 import io.swagger.annotations.ApiOperation;
@@ -28,14 +28,14 @@ public class UserRestController extends BaseController {
     private ISysUserService sysUserService;
 
     @ApiOperation(value = "查询所有用户", notes = "查询所有用户")
-    @RequestMapping(value = "/", method = RequestMethod.GET)
+    @RequestMapping(value = "", method = RequestMethod.GET)
     public ReturnVo getUsers() throws BusinessException {
         List<SysUserModel> userList = sysUserService.searchListByPage();
         return ReturnVo.successVo(userList);
     }
 
     @ApiOperation(value = "新增用户", notes = "新增用户")
-    @RequestMapping(value = "/", method = RequestMethod.POST)
+    @RequestMapping(value = "", method = RequestMethod.POST)
     public ReturnVo postUser(@RequestBody SysUserModel sysUserModel) throws BusinessException {
         sysUserService.addUser(sysUserModel);
         ReturnVo<String> returnVo = ReturnVo.successVo();
@@ -51,7 +51,7 @@ public class UserRestController extends BaseController {
     }
 
     @ApiOperation(value = "修改信息", notes = "根据ID修改有变动的用户信息")
-    @RequestMapping(value = "/", method = RequestMethod.PATCH)
+    @RequestMapping(value = "", method = RequestMethod.PATCH)
     public ReturnVo patchUser(@RequestBody SysUserModel sysUserModel) throws BusinessException {
         sysUserService.updateUserSelective(sysUserModel);
         ReturnVo<String> returnVo = ReturnVo.successVo();
@@ -61,7 +61,7 @@ public class UserRestController extends BaseController {
 
     @ApiIgnore
     @ApiOperation(value = "修改信息", notes = "根据ID修改用户所有信息")
-    @RequestMapping(value = "/", method = RequestMethod.PUT)
+    @RequestMapping(value = "", method = RequestMethod.PUT)
     public ReturnVo putUser(@RequestBody SysUserModel sysUserModel) throws BusinessException {
         sysUserService.updateUserFull(sysUserModel);
         ReturnVo<String> returnVo = ReturnVo.successVo();

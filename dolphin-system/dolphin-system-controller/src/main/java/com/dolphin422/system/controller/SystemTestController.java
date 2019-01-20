@@ -6,6 +6,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.Date;
+
 /**
  * @Description: 系统模块 请求处理层
  * @Author: DamonJT
@@ -19,6 +21,7 @@ public class SystemTestController extends BaseController {
     @ResponseBody
     public String sayHello(String name) {
 
-        return "Hello " + name+", Your system uuid is " + UUIDGenerator.getUUID();
+        return "Hello " + name+", Now is "+new Date()+"Your system uuid is " + UUIDGenerator.getUUID();
     }
+
 }

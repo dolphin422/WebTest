@@ -1,4 +1,4 @@
-package com.dolphin422.common.returndata;
+package com.dolphin422.common.returnvo;
 
 import com.dolphin422.common.base.BaseVo;
 import com.dolphin422.common.enumeration.statuscode.business.BusinessStatusCodeEnum;
@@ -46,7 +46,7 @@ public class ReturnVo<T> extends BaseVo {
      */
     public static ReturnVo<String> successVo() {
         return new ReturnVo<String>(BusinessStatusCodeEnum.SUCCESS.getStatusCode(),
-            BusinessStatusCodeEnum.SUCCESS.getDescription());
+                BusinessStatusCodeEnum.SUCCESS.getDescription());
     }
 
     /**
@@ -69,8 +69,9 @@ public class ReturnVo<T> extends BaseVo {
      * @return ReturnVo statusCode :200,message : 操作成功 ,data:JSON格式业务数据
      */
     public static ReturnVo<String> successVo(Object data) {
-        ReturnVo<String> jsonDataReturnVo = new ReturnVo<String>(BusinessStatusCodeEnum.SUCCESS.getStatusCode(),
-            BusinessStatusCodeEnum.SUCCESS.getDescription());
+        ReturnVo<String> jsonDataReturnVo = new ReturnVo<String>(
+                BusinessStatusCodeEnum.SUCCESS.getStatusCode(),
+                BusinessStatusCodeEnum.SUCCESS.getDescription());
         if (null == data) {
             return jsonDataReturnVo;
         }
@@ -78,7 +79,7 @@ public class ReturnVo<T> extends BaseVo {
             jsonDataReturnVo.setData((String) data);
             return jsonDataReturnVo;
         }
-        Gson gsonSource = new GsonBuilder().setDateFormat(DateUtil.FORMAT_DATE_TIME).create();
+        Gson gsonSource = new GsonBuilder().setDateFormat(DateUtil.DEFAULT_FORMAT_DATE_TIME).create();
         String dataJson = gsonSource.toJson(data);
         jsonDataReturnVo.setData(dataJson);
         return jsonDataReturnVo;
@@ -93,7 +94,8 @@ public class ReturnVo<T> extends BaseVo {
      * @return ReturnVo statusCode :200,message : 操作成功 , data:原始业务数据
      */
     public static <T> ReturnVo<T> successVoWithOriginalData(T data) {
-        ReturnVo<T> originalDataReturnVo = new ReturnVo<T>();
+        ReturnVo<T> originalDataReturnVo = new ReturnVo<T>(BusinessStatusCodeEnum.SUCCESS.getStatusCode(),
+                BusinessStatusCodeEnum.SUCCESS.getDescription());
         originalDataReturnVo.setData(data);
         return originalDataReturnVo;
     }
@@ -167,10 +169,10 @@ public class ReturnVo<T> extends BaseVo {
     @Override
     public String toString() {
         return "ReturnVo{" +
-            "statusCode='" + statusCode + '\'' +
-            ", description='" + description + '\'' +
-            ", message='" + message + '\'' +
-            ", data=" + data.toString() +
-            '}';
+                "statusCode='" + statusCode + '\'' +
+                ", description='" + description + '\'' +
+                ", message='" + message + '\'' +
+                ", data=" + data.toString() +
+                '}';
     }
 }

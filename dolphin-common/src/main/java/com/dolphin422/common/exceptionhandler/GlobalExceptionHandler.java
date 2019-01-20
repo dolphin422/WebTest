@@ -3,7 +3,7 @@ package com.dolphin422.common.exceptionhandler;
 import com.dolphin422.common.enumeration.statuscode.system.SystemExceptionCodeEnum;
 import com.dolphin422.common.exception.BusinessException;
 import com.dolphin422.common.exception.SystemException;
-import com.dolphin422.common.returndata.ReturnVo;
+import com.dolphin422.common.returnvo.ReturnVo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.ControllerAdvice;
