@@ -47,15 +47,6 @@ public class DateUtil {
      */
     public static final String FORMAT_DATE_TIME_SSS = "yyyy-MM-dd HH:mm:ss.SSS";
 
-    /**
-     * yyyyMMdd
-     */
-    public static final String FORMAT_DATE_1 = "yyyyMMdd";
-
-    /**
-     * MM/dd/yyyy
-     */
-    public static final String FORMAT_DATE_2 = "MM/dd/yyyy";
 
     /**
      * 时区
@@ -312,7 +303,7 @@ public class DateUtil {
 
     /**
      * <br>Description:传入日期减少天数
-     * <br>Author:刘爽
+     * <br>Author:
      * <br>Date:2016年9月5日
      *
      * @param dateStr     日期
@@ -598,7 +589,7 @@ public class DateUtil {
      * @return
      */
     public static LocalDateTime setYMD(LocalDateTime sourceDate, Integer year, Integer month,
-        Integer dayOfMonth) {
+                                       Integer dayOfMonth) {
         return sourceDate.withYear(year).withMonth(month).withDayOfMonth(dayOfMonth);
     }
 
@@ -612,7 +603,7 @@ public class DateUtil {
      * @return
      */
     public static LocalDateTime setHMS(LocalDateTime sourceDate, Integer hour, Integer minute,
-        Integer second) {
+                                       Integer second) {
         return sourceDate.withHour(hour).withMinute(minute).withSecond(second);
     }
 
