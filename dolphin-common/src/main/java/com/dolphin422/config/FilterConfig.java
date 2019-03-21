@@ -1,6 +1,7 @@
 package com.dolphin422.config;
 
 import com.dolphin422.common.filter.ContentTypeFilter;
+import com.dolphin422.common.filter.ExceptionHandlerFilter;
 import com.dolphin422.common.filter.XssFilter;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
@@ -19,7 +20,7 @@ public class FilterConfig {
         registration.setFilter(new ContentTypeFilter());
         registration.addUrlPatterns("/*");
         registration.setName("ContentTypeFilter");
-        registration.setOrder(1);
+        registration.setOrder(2);
         return registration;
     }
     @Bean
@@ -28,7 +29,16 @@ public class FilterConfig {
         registration.setFilter(new XssFilter());
         registration.addUrlPatterns("/*");
         registration.setName("XssFilter");
-        registration.setOrder(2);
+        registration.setOrder(3);
+        return registration;
+    }
+    @Bean
+    public FilterRegistrationBean exceptionHandlerFilter() {
+        FilterRegistrationBean registration = new FilterRegistrationBean();
+        registration.setFilter(new ExceptionHandlerFilter());
+        registration.addUrlPatterns("/*");
+        registration.setName("exceptionHandlerFilter");
+        registration.setOrder(1);
         return registration;
     }
 }

@@ -2,6 +2,7 @@ package com.dolphin422.common.filter;
 
 import com.dolphin422.common.enumeration.statuscode.business.BusinessStatusCodeEnum;
 import com.dolphin422.common.exception.BusinessException;
+import java.util.Date;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -35,6 +36,10 @@ public class ContentTypeFilter extends HttpServlet implements Filter {
         HttpServletRequest request = (HttpServletRequest) requestArg0;
         HttpServletResponse response = (HttpServletResponse) responseArg1;
         //判断 ContentType
+        if(true) {
+            throw new BusinessException(BusinessStatusCodeEnum.ILLEGAL_ARGUMENT,"---校验Filter中异常,time:{}",
+                new Date());
+        }
         String requestContentType = request.getHeader(contentType);
         this.checkContentType(requestContentType);
         arg2.doFilter(request, response);

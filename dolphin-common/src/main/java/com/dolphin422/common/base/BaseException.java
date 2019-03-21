@@ -1,6 +1,6 @@
 package com.dolphin422.common.base;
 
-
+import com.google.gson.Gson;
 import org.springframework.util.StringUtils;
 
 /**
@@ -32,7 +32,7 @@ public abstract class BaseException extends RuntimeException {
      * @param throwable     the throwable
      */
     protected BaseException(Enum<? extends IBaseStatusCodeEnum> exceptionCode,
-                            Throwable throwable) {
+        Throwable throwable) {
         super(throwable);
         this.exceptionCode = exceptionCode;
     }
@@ -44,7 +44,7 @@ public abstract class BaseException extends RuntimeException {
      * @param message       the message
      */
     protected BaseException(Enum<? extends IBaseStatusCodeEnum> exceptionCode,
-                            String message) {
+        String message) {
         super(message);
         this.exceptionCode = exceptionCode;
     }
@@ -57,7 +57,7 @@ public abstract class BaseException extends RuntimeException {
      * @param args          the args
      */
     protected BaseException(Enum<? extends IBaseStatusCodeEnum> exceptionCode,
-                            String message, Object... args) {
+        String message, Object... args) {
         super(rebuildMessage(message, args));
         this.exceptionCode = exceptionCode;
     }
@@ -70,7 +70,7 @@ public abstract class BaseException extends RuntimeException {
      * @param message       the message
      */
     protected BaseException(Enum<? extends IBaseStatusCodeEnum> exceptionCode,
-                            Throwable throwable, String message) {
+        Throwable throwable, String message) {
         super(message, throwable);
         this.exceptionCode = exceptionCode;
     }
@@ -84,7 +84,7 @@ public abstract class BaseException extends RuntimeException {
      * @param args          the args
      */
     protected BaseException(Enum<? extends IBaseStatusCodeEnum> exceptionCode,
-                            Throwable throwable, String message, Object... args) {
+        Throwable throwable, String message, Object... args) {
         super(rebuildMessage(message, args), throwable);
         this.exceptionCode = exceptionCode;
     }
@@ -109,6 +109,14 @@ public abstract class BaseException extends RuntimeException {
         return super.toString() + "--异常" + exceptionCode + "--";
     }
 
+    public String getJson() {
+        Gson gson = new Gson();
+        if (this != null) {
+            return gson.toJson(this);
+        }
+        return null;
+    }
+
     /**
      * 重新构建message
      *
@@ -125,7 +133,7 @@ public abstract class BaseException extends RuntimeException {
                 int index = sourceMsg.indexOf("{}");
                 if (index >= 0) {
                     sourceMsg = sourceMsg.substring(0, index) + arg.toString() +
-                            sourceMsg.substring(index + 2);
+                        sourceMsg.substring(index + 2);
                 } else {
                     break;
                 }

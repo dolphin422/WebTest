@@ -2,13 +2,12 @@ package com.dolphin422.common.filter;
 
 import com.dolphin422.common.exception.BusinessException;
 import com.dolphin422.common.util.SqlInjectionUtil;
-import org.apache.commons.lang3.StringEscapeUtils;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletRequestWrapper;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.regex.Pattern;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletRequestWrapper;
+import org.apache.commons.lang3.StringEscapeUtils;
 
 /**
  * @Description: Xss过滤+SQL关键字校验
@@ -103,6 +102,10 @@ public class XssHttpServletRequestWrapper extends HttpServletRequestWrapper {
     private String xssCleanSqlCheck(String paramStr) throws BusinessException {
         //paramStr = this.xssClean(paramStr);
         //paramStr = HtmlUtils.htmlEscape(paramStr);
+       /* if(true) {
+            throw new BusinessException(BusinessStatusCodeEnum.ILLEGAL_ARGUMENT,"---校验Filter中异常,time:{}",
+                new Date());
+        }*/
         paramStr = StringEscapeUtils.escapeHtml4(paramStr);
         SqlInjectionUtil.checkSQLInjection(paramStr);
         return paramStr;
