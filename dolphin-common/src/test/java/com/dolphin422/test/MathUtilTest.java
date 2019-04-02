@@ -50,6 +50,15 @@ public class MathUtilTest {
         logger.info("----16:08({})----bads------>{}", System.currentTimeMillis(), bads);
     }
 
+    @Test
+    public void strMathAddTest() {
+        String firstVersion = "1.0";
+        String add = MathUtil.strAdd(firstVersion, firstVersion, 1);
+        logger.debug("-----------add------{}", add);
+        String add2 = MathUtil.strAdd(add, firstVersion, 1);
+        logger.debug("-----------add2------{}", add2);
+    }
+
     /**
      * 转换分数为类型
      *
