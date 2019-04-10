@@ -4,6 +4,7 @@ import com.dolphin422.business.dao.article.IArticleDao;
 import com.dolphin422.business.model.article.ArticleModel;
 import com.dolphin422.business.service.api.article.IArticleService;
 import com.dolphin422.common.base.BaseServiceImpl;
+import com.dolphin422.system.service.api.user.ISysUserService;
 import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -23,6 +24,9 @@ public class ArticleServiceImpl extends BaseServiceImpl implements IArticleServi
      * logger
      */
     private Logger logger = LoggerFactory.getLogger(ArticleServiceImpl.class);
+
+    @Autowired
+    private ISysUserService userservice;
 
     @Autowired
     private IArticleDao articleDao;
