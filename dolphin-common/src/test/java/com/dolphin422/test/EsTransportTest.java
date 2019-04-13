@@ -41,13 +41,13 @@ public class EsTransportTest {
     /**
      * 162 服务器外网IP
      */
-    private final static String HOST = "1.119.162.242";
+    private final static String HOST = "";
 
     /**
-     * 162服务器  28920    28930
-     * 默认 //http请求的端口是9200，客户端是9300
+     * 162服务器  9300    9300
+     * 默认 //http请求的端口是 9200，客户端是 9300
      */
-    private final static int PORT = 28930;
+    private final static int PORT = 9300;
 
     private TransportClient client = null;
 

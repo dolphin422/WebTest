@@ -36,13 +36,13 @@ public class EsHighRestTest {
     /**
      * 162 服务器外网IP
      */
-    private final static String HTTP_HOST = "1.119.162.242";
+    private final static String HTTP_HOST = "";
 
     /**
-     * 162服务器  28920    28930
-     * 默认 //http请求的端口是9200，客户端是9300
+     * 162服务器  9200    9300
+     * 默认 //http请求的端口是 9200，客户端是9300
      */
-    private final static int HTTP_PORT = 28920;
+    private final static int HTTP_PORT = 9200;
 
     /**
      * es连接方式 http
