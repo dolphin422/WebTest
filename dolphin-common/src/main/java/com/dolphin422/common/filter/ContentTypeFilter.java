@@ -2,11 +2,7 @@ package com.dolphin422.common.filter;
 
 import com.dolphin422.common.enumeration.statuscode.business.BusinessStatusCodeEnum;
 import com.dolphin422.common.exception.BusinessException;
-import java.util.Date;
-import org.apache.commons.lang3.StringUtils;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
+import java.io.IOException;
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
 import javax.servlet.FilterConfig;
@@ -16,7 +12,9 @@ import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
+import org.apache.commons.lang3.StringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * @Description: ContentType类型限制Filter
@@ -26,20 +24,16 @@ import java.io.IOException;
 public class ContentTypeFilter extends HttpServlet implements Filter {
 
     private static final long serialVersionUID = -3907319234295414657L;
-    private Logger logger = LoggerFactory.getLogger(ContentTypeFilter.class);
 
+    private Logger logger = LoggerFactory.getLogger(ContentTypeFilter.class);
 
     @Override
     public void doFilter(ServletRequest requestArg0, ServletResponse responseArg1,
-                         FilterChain arg2) throws IOException, ServletException {
+        FilterChain arg2) throws IOException, ServletException {
         String contentType = "content-type";
         HttpServletRequest request = (HttpServletRequest) requestArg0;
         HttpServletResponse response = (HttpServletResponse) responseArg1;
         //判断 ContentType
-        if(true) {
-            throw new BusinessException(BusinessStatusCodeEnum.ILLEGAL_ARGUMENT,"---校验Filter中异常,time:{}",
-                new Date());
-        }
         String requestContentType = request.getHeader(contentType);
         this.checkContentType(requestContentType);
         arg2.doFilter(request, response);
@@ -63,7 +57,7 @@ public class ContentTypeFilter extends HttpServlet implements Filter {
         String mulData = "multipart/form-data";
         String txtPla = "text/plain";
         String json = "application/json";
-        String textXml ="text/xml";
+        String textXml = "text/xml";
         //String utf8 = "charset=utf-8";
 
         if (StringUtils.isEmpty(contentType)) {
@@ -89,7 +83,7 @@ public class ContentTypeFilter extends HttpServlet implements Filter {
         }
         logger.debug("http请求ContentType:{}不符合规则", contentType);
         throw new BusinessException(BusinessStatusCodeEnum.ILLEGAL_ARGUMENT, "http请求ContentType:{}不符合规则,请检查.",
-                contentType);
+            contentType);
 
     }
 

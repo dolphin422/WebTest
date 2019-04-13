@@ -8,7 +8,7 @@ import com.google.gson.GsonBuilder;
  * @author: DamonJT MAC
  * @createDate: 2018/12/24 23:42
  */
-public class JsonUtil {
+public class GsonUtil {
     /**
      * 默认GSON
      * 时间格式为： yyyy-MM-dd HH:mm:ss
