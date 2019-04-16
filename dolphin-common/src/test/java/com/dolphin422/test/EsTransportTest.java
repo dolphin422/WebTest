@@ -41,7 +41,7 @@ public class EsTransportTest {
     /**
      * 162 服务器外网IP
      */
-    private final static String HOST = "";
+    private final static String HOST = "127.0.0.1";
 
     /**
      * 162服务器  9300    9300
@@ -209,7 +209,7 @@ public class EsTransportTest {
      */
     @Test
     public void getData1() {
-        GetResponse getResponse = client.prepareGet("law", "lawtype", "6066D949EBF14CDC8767FCF766965443").get();
+        GetResponse getResponse = client.prepareGet("law", "lawtype", "2").get();
         logger.info("索引库的数据:" + getResponse.getSourceAsString());
     }
     /*

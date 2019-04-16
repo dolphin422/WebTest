@@ -36,7 +36,7 @@ public class EsHighRestTest {
     /**
      * 162 服务器外网IP
      */
-    private final static String HTTP_HOST = "";
+    private final static String HTTP_HOST = "127.0.0.1";
 
     /**
      * 162服务器  9200    9300
@@ -192,8 +192,8 @@ json文档ID:1
     public void getData1() throws IOException {
         GetRequest getRequest = new GetRequest(
             "law",
-            "lawType",
-            "1");
+            "lawtype",
+            "2");
         GetResponse getResponse = restHighLevelClient.get(getRequest, RequestOptions.DEFAULT);
         String index = getResponse.getIndex();
         String type = getResponse.getType();

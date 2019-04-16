@@ -1,5 +1,6 @@
 package com.dolphin422.vo;
 
+import com.dolphin422.common.base.BaseVo;
 import java.util.Date;
 
 /**
@@ -7,7 +8,9 @@ import java.util.Date;
  * @description:
  * @createDate: 2019.04.11 11:37
  */
-public class TestVo {
+public class TestVo extends BaseVo {
+    private static final long serialVersionUID = -644355050054107194L;
+
     private String id;
 
     private String title;
