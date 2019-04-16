@@ -130,10 +130,14 @@ public abstract class BaseException extends RuntimeException {
         }
         if (null != args && args.length > 0) {
             for (Object arg : args) {
+                if (null == arg) {
+                    return sourceMsg;
+                }
                 int index = sourceMsg.indexOf("{}");
                 if (index >= 0) {
-                    sourceMsg = sourceMsg.substring(0, index) + arg.toString() +
-                        sourceMsg.substring(index + 2);
+                    StringBuilder sb = new StringBuilder(sourceMsg.substring(0, index));
+                    sb.append(arg.toString()).append(sourceMsg.substring(index + 2));
+                    sourceMsg = sb.toString();
                 } else {
                     break;
                 }

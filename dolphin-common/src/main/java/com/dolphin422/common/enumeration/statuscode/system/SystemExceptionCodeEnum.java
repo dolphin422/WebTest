@@ -8,8 +8,8 @@ import com.dolphin422.common.base.IBaseStatusCodeEnum;
  * @createDate: 2018.12.14 2:09
  */
 public enum SystemExceptionCodeEnum implements IBaseStatusCodeEnum {
-    ERROR("700", "错误") {},
-    TIME_OUT("701", "超时") {};
+    ERROR("700", "系统错误") {},
+    TIME_OUT("701", "连接超时") {};
 
     @Override
     public String getStatusCode() {
