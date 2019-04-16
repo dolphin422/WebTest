@@ -11,40 +11,27 @@
 
     <artifactId>dolphin-common</artifactId>
 
-    <properties>
-<!--        <springboot.version>2.1.0.RELEASE</springboot.version>
-        <druid.version>1.1.10</druid.version>
-        <mapper.plugin>tk.mybatis.mapper.generator.MapperPlugin</mapper.plugin>
-        <mapper.Mapper>tk.mybatis.mapper.common.Mapper</mapper.Mapper>
-        <mybatis.version>1.3.1</mybatis.version>-->
-
-<!--        <tk.mapper.version>1.2.3</tk.mapper.version>
-        <generator.version>1.3.5</generator.version>
-        <mysql.connector.version>5.1.38</mysql.connector.version>-->
-
-
-    </properties>
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter</artifactId>
-      <!--      <version>${springboot.version}</version>-->
+            <!--      <version>${springboot.version}</version>-->
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
-       <!--     <version>${springboot.version}</version>-->
+            <!--     <version>${springboot.version}</version>-->
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-devtools</artifactId>
-       <!--     <version>${springboot.version}</version>-->
+            <!--     <version>${springboot.version}</version>-->
             <scope>runtime</scope>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
-         <!--   <version>${springboot.version}</version>-->
+            <!--   <version>${springboot.version}</version>-->
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -65,23 +52,23 @@
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>druid</artifactId>
-       <!--     <version>${druid.version}</version>-->
+            <!--     <version>${druid.version}</version>-->
         </dependency>
         <dependency>
             <groupId>tk.mybatis</groupId>
             <artifactId>mapper-spring-boot-starter</artifactId>
-      <!--      <version>${tk.mapper.version}</version>-->
+            <!--      <version>${tk.mapper.version}</version>-->
         </dependency>
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
-        <!--    <version>${mysql.connector.version}</version>-->
+            <!--    <version>${mysql.connector.version}</version>-->
         </dependency>
         <!--google json-->
         <dependency>
             <groupId>com.google.code.gson</groupId>
             <artifactId>gson</artifactId>
-      <!--      <version>${gson.version}</version>-->
+            <!--      <version>${gson.version}</version>-->
         </dependency>
         <dependency>
             <groupId>org.apache.commons</groupId>
@@ -92,10 +79,48 @@
         <dependency>
             <groupId>io.springfox</groupId>
             <artifactId>springfox-swagger2</artifactId>
+            <version>2.6.1</version>
         </dependency>
         <dependency>
             <groupId>io.springfox</groupId>
             <artifactId>springfox-swagger-ui</artifactId>
+            <version>2.6.1</version>
+        </dependency>
+
+        <!--ELK-->
+        <!-- Elasticsearch核心依赖包 -->
+        <dependency>
+            <groupId>org.elasticsearch.client</groupId>
+            <artifactId>transport</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.elasticsearch.plugin</groupId>
+            <artifactId>transport-netty4-client</artifactId>
+            <version>6.7.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.elasticsearch</groupId>
+            <artifactId>elasticsearch</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.elasticsearch.client</groupId>
+            <artifactId>elasticsearch-rest-high-level-client</artifactId>
+            <!-- <version>6.7.0</version>-->
+        </dependency>
+        <dependency>
+            <groupId>org.elasticsearch.client</groupId>
+            <artifactId>elasticsearch-rest-client</artifactId>
+        </dependency>
+        <!-- 日志依赖 -->
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-core</artifactId>
+            <version>2.8.2</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-api</artifactId>
+            <version>2.8.2</version>
         </dependency>
     </dependencies>
     <build>

@@ -35,7 +35,6 @@ public class XssHttpServletRequestWrapper extends HttpServletRequestWrapper {
         return parameterMap;
     }
 
-
     /**
      * 获取参数值
      *
@@ -102,10 +101,6 @@ public class XssHttpServletRequestWrapper extends HttpServletRequestWrapper {
     private String xssCleanSqlCheck(String paramStr) throws BusinessException {
         //paramStr = this.xssClean(paramStr);
         //paramStr = HtmlUtils.htmlEscape(paramStr);
-       /* if(true) {
-            throw new BusinessException(BusinessStatusCodeEnum.ILLEGAL_ARGUMENT,"---校验Filter中异常,time:{}",
-                new Date());
-        }*/
         paramStr = StringEscapeUtils.escapeHtml4(paramStr);
         SqlInjectionUtil.checkSQLInjection(paramStr);
         return paramStr;
@@ -161,61 +156,69 @@ public class XssHttpServletRequestWrapper extends HttpServletRequestWrapper {
      * Avoid anything between script tags
      */
     private static final String BETWEEN_SCRIPT_TAGS_REG = "<script>(.*?)</script>";
+
     private static Pattern BETWEEN_SCRIPT_TAGS_PATTERN = Pattern
-            .compile(BETWEEN_SCRIPT_TAGS_REG, Pattern.CASE_INSENSITIVE);
+        .compile(BETWEEN_SCRIPT_TAGS_REG, Pattern.CASE_INSENSITIVE);
 
     /**
      * Avoid anything in a src='...' type of expression
      */
     private static final String SRC_REG = "src[\r\n]*=[\r\n]*\\\'(.*?)\\\'";
+
     private static Pattern SRC_PATTERN = Pattern
-            .compile(SRC_REG, Pattern.CASE_INSENSITIVE | Pattern.MULTILINE | Pattern.DOTALL);
+        .compile(SRC_REG, Pattern.CASE_INSENSITIVE | Pattern.MULTILINE | Pattern.DOTALL);
 
     /**
      * Remove any lonesome </script> tag
      */
     private static final String SCRIPT_TAG_REG = "</script>";
+
     private static Pattern SCRIPT_TAG_PATTERN = Pattern.compile(SCRIPT_TAG_REG, Pattern.CASE_INSENSITIVE);
 
     /**
      * Remove any lonesome <script ...> tag
      */
     private static final String SCRIPT_TAGS_REG = "<script(.*?)>";
+
     private static Pattern SCRIPT_TAGS_PATTERN = Pattern
-            .compile(SCRIPT_TAGS_REG, Pattern.CASE_INSENSITIVE | Pattern.MULTILINE | Pattern.DOTALL);
+        .compile(SCRIPT_TAGS_REG, Pattern.CASE_INSENSITIVE | Pattern.MULTILINE | Pattern.DOTALL);
 
     /**
      * Avoid eval(...) expressions
      */
     private static final String EVAL_REG = "eval\\((.*?)\\)";
+
     private static Pattern EVAL_PATTERN = Pattern
-            .compile(EVAL_REG, Pattern.CASE_INSENSITIVE | Pattern.MULTILINE | Pattern.DOTALL);
+        .compile(EVAL_REG, Pattern.CASE_INSENSITIVE | Pattern.MULTILINE | Pattern.DOTALL);
 
     /**
      * Avoid expression(...) expressions
      */
     private static final String EXPRESSION_REG = "expression\\((.*?)\\)";
+
     private static Pattern EXPRESSION_PATTERN = Pattern
-            .compile(EXPRESSION_REG, Pattern.CASE_INSENSITIVE | Pattern.MULTILINE | Pattern.DOTALL);
+        .compile(EXPRESSION_REG, Pattern.CASE_INSENSITIVE | Pattern.MULTILINE | Pattern.DOTALL);
 
     /**
      * Avoid javascript:... expressions
      */
     private static final String JAVASCRIPT_REG = "javascript:";
+
     private static Pattern JAVASCRIPT_PATTERN = Pattern.compile(JAVASCRIPT_REG, Pattern.CASE_INSENSITIVE);
 
     /**
      * Avoid vbscript:... expressions
      */
     private static final String VBSCRIPT_REG = "vbscript:";
+
     private static Pattern VBSCRIPT_PATTERN = Pattern.compile(VBSCRIPT_REG, Pattern.CASE_INSENSITIVE);
 
     /**
      * Avoid onload= expressions
      */
     private static final String ONLOAD_REG = "onload(.*?)=";
-    private static Pattern ONLOAD_PATTERN = Pattern
-            .compile(ONLOAD_REG, Pattern.CASE_INSENSITIVE | Pattern.MULTILINE | Pattern.DOTALL);
 
+    private static Pattern ONLOAD_PATTERN = Pattern
+        .compile(ONLOAD_REG, Pattern.CASE_INSENSITIVE | Pattern.MULTILINE | Pattern.DOTALL);
 
 }

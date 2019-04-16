@@ -1,4 +1,4 @@
-package com.dolphin422.system.controller;
+package com.dolphin422.system.controller.test;
 
 import com.dolphin422.common.base.BaseController;
 import com.dolphin422.common.util.UUIDGenerator;
