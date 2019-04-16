@@ -14,9 +14,9 @@ import org.apache.commons.lang3.StringEscapeUtils;
  * @author: DamonJT MAC
  * @createDate: 2018/12/22 22:30
  */
-public class XssHttpServletRequestWrapper extends HttpServletRequestWrapper {
+public class XssAndSqlCleanWrapper extends HttpServletRequestWrapper {
 
-    XssHttpServletRequestWrapper(HttpServletRequest request) {
+    XssAndSqlCleanWrapper(HttpServletRequest request) {
         super(request);
     }
 

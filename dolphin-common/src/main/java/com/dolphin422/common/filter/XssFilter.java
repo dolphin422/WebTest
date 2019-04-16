@@ -24,7 +24,7 @@ public class XssFilter implements Filter {
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
             throws IOException, ServletException {
 
-        chain.doFilter(new XssHttpServletRequestWrapper((HttpServletRequest) request), response);
+        chain.doFilter(new XssAndSqlCleanWrapper((HttpServletRequest) request), response);
 
     }
 

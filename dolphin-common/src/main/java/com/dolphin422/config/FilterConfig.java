@@ -15,6 +15,16 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class FilterConfig {
     @Bean
+    public FilterRegistrationBean exceptionHandlerFilter() {
+        FilterRegistrationBean registration = new FilterRegistrationBean();
+        registration.setFilter(new ExceptionHandlerFilter());
+        registration.addUrlPatterns("/*");
+        registration.setName("exceptionHandlerFilter");
+        registration.setOrder(1);
+        return registration;
+    }
+
+    @Bean
     public FilterRegistrationBean contentTypeFilter() {
         FilterRegistrationBean registration = new FilterRegistrationBean();
         registration.setFilter(new ContentTypeFilter());
@@ -23,6 +33,7 @@ public class FilterConfig {
         registration.setOrder(2);
         return registration;
     }
+
     @Bean
     public FilterRegistrationBean xssFilter() {
         FilterRegistrationBean registration = new FilterRegistrationBean();
@@ -32,13 +43,5 @@ public class FilterConfig {
         registration.setOrder(3);
         return registration;
     }
-    @Bean
-    public FilterRegistrationBean exceptionHandlerFilter() {
-        FilterRegistrationBean registration = new FilterRegistrationBean();
-        registration.setFilter(new ExceptionHandlerFilter());
-        registration.addUrlPatterns("/*");
-        registration.setName("exceptionHandlerFilter");
-        registration.setOrder(1);
-        return registration;
-    }
+
 }

@@ -58,17 +58,12 @@ public class ContentTypeFilter extends HttpServlet implements Filter {
         String txtPla = "text/plain";
         String json = "application/json";
         String textXml = "text/xml";
-        //String utf8 = "charset=utf-8";
 
         if (StringUtils.isEmpty(contentType)) {
             return;
         }
+        //转换为小写
         contentType = contentType.toLowerCase();
-//        if(!contentType.contains(utf8)){
-//            logger.debug("http请求ContentType:{}中未设置请求编码格式为utf-8", contentType);
-//            throw new BusinessException(BusinessStatusCodeEnum.ILLEGAL_ARGUMENT, "请在http请求ContentType:{}中设置编码格式为utf-8，(charset=utf-8)",
-//                    contentType);
-//        }
         if (contentType.contains(wwwUrlEncode)) {
             return;
         }
@@ -81,9 +76,19 @@ public class ContentTypeFilter extends HttpServlet implements Filter {
         if (contentType.contains(json)) {
             return;
         }
+        if (contentType.contains(textXml)) {
+            return;
+        }
         logger.debug("http请求ContentType:{}不符合规则", contentType);
         throw new BusinessException(BusinessStatusCodeEnum.ILLEGAL_ARGUMENT, "http请求ContentType:{}不符合规则,请检查.",
             contentType);
+
+//      String utf8 = "charset=utf-8";
+//        if(!contentType.contains(utf8)){
+//            logger.debug("http请求ContentType:{}中未设置请求编码格式为utf-8", contentType);
+//            throw new BusinessException(BusinessStatusCodeEnum.ILLEGAL_ARGUMENT, "请在http请求ContentType:{}中设置编码格式为utf-8，(charset=utf-8)",
+//                    contentType);
+//        }
 
     }
 

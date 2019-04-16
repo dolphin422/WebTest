@@ -30,7 +30,6 @@ public class SysUserController extends BaseController {
     @Autowired
     private ISysUserService sysUserService;
 
-
     @RequestMapping("/showDataByPage")
     @ResponseBody
     public List<SysUserModel> showDataByPage() {
@@ -40,8 +39,9 @@ public class SysUserController extends BaseController {
 
     @RequestMapping("/test")
     @ResponseBody
-    public JsonTestVo testJson1() {
+    public JsonTestVo testJson1(String name) {
         JsonTestVo jsonTestVo = new JsonTestVo();
+        jsonTestVo.setCode(name);
         return jsonTestVo;
     }
 
@@ -67,6 +67,5 @@ public class SysUserController extends BaseController {
         List<SysUserModel> userModelList = sysUserService.searchListByPage();
         return ReturnVo.successVoWithOriginalData(userModelList);
     }
-
 
 }

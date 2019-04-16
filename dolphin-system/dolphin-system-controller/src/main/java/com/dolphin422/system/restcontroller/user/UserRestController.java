@@ -31,7 +31,7 @@ public class UserRestController extends BaseController {
     @RequestMapping(value = "", method = RequestMethod.GET)
     public ReturnVo getUsers() throws BusinessException {
         List<SysUserModel> userList = sysUserService.searchListByPage();
-        return ReturnVo.successVo(userList);
+        return ReturnVo.successVoWithOriginalData(userList);
     }
 
     @ApiOperation(value = "新增用户", notes = "新增用户")
