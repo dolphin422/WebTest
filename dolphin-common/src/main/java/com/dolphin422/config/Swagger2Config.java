@@ -38,7 +38,7 @@ public class Swagger2Config {
         return new ApiInfoBuilder()
             .title("利用Swagger2构建Api文档")
             .description("dolphin项目rest接口文档")
-            .termsOfServiceUrl("http://localhost:8080/swagger-ui.html")
+            .termsOfServiceUrl("http://项目host:port/项目名/swagger-ui.html")
             .version("1.0")
             .build();
     }
