@@ -42,6 +42,7 @@
         <swagger.version>2.6.1</swagger.version>
         <elsaticsearch.version>6.7.0</elsaticsearch.version>
         <log4j.version>2.8.2</log4j.version>
+        <springfox.version>2.7.0</springfox.version>
     </properties>
 
     <!--管理依赖jar包-->
@@ -119,6 +120,16 @@
                 <artifactId>springfox-swagger-ui</artifactId>
                 <version>${swagger.version}</version>
             </dependency>
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-spring-web</artifactId>
+                <version>${springfox.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-spi</artifactId>
+                <version>${springfox.version}</version>
+            </dependency>
             <!--ELK-->
             <!-- Elasticsearch核心依赖包 -->
             <dependency>
@@ -157,6 +168,7 @@
                 <artifactId>log4j-api</artifactId>
                 <version>${log4j.version}</version>
             </dependency>
+
         </dependencies>
     </dependencyManagement>
 
