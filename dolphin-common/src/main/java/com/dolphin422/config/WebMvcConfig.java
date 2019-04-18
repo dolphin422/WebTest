@@ -27,7 +27,7 @@ public class WebMvcConfig implements WebMvcConfigurer {
 
     @Bean
     public HttpMessageConverters customConverters() {
-        Collection<HttpMessageConverter<?>> messageConverters = new ArrayList<>();
+        Collection<HttpMessageConverter<?>> messageConverters = new ArrayList<HttpMessageConverter<?>>();
         GsonHttpMessageConverter gsonHttpMessageConverter = new GsonHttpMessageConverter();
         Gson gson = new GsonBuilder()
             //设置时间格式

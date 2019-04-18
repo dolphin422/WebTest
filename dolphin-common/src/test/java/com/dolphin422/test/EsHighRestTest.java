@@ -15,9 +15,6 @@ import org.elasticsearch.client.RestHighLevelClient;
 import org.elasticsearch.common.xcontent.XContentBuilder;
 import org.elasticsearch.common.xcontent.XContentFactory;
 import org.elasticsearch.common.xcontent.XContentType;
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -61,7 +58,7 @@ public class EsHighRestTest {
      * @date 2017年11月23日
      */
     @SuppressWarnings({ "resource", "unchecked" })
-    @Before
+ //   @Before
     public void getConnect() {
         try {
             restHighLevelClient = new RestHighLevelClient(
@@ -82,7 +79,7 @@ public class EsHighRestTest {
      * @author sunt
      * @date 2017年11月23日
      */
-    @After
+   // @After
     public void closeConnect() {
         if (null != restHighLevelClient) {
             try {
@@ -105,7 +102,7 @@ public class EsHighRestTest {
      * @author sunt
      * @date 2017年11月23日
      */
-    @Test
+   // @Test
     public void addIndex1() throws IOException {
         XContentBuilder xContentBuilder = XContentFactory.jsonBuilder()
             .startObject().field("userName", "张三")
@@ -126,7 +123,7 @@ public class EsHighRestTest {
      * @author sunt
      * @date 2017年11月23日
      */
-    @Test
+   // @Test
     public void addIndexByJsonStr() throws IOException {
         IndexRequest request = new IndexRequest(
             "law",
@@ -159,7 +156,7 @@ json文档ID:1
      * @author sunt
      * @date 2017年11月23日
      */
-    @Test
+   // @Test
     public void addIndex4() {
         Map<String, Object> map = new HashMap<String, Object>();
         map.put("userName", "张三");
@@ -188,7 +185,7 @@ json文档ID:1
      * @author sunt
      * @date 2017年11月23日
      */
-    @Test
+   // @Test
     public void getData1() throws IOException {
         GetRequest getRequest = new GetRequest(
             "law",
@@ -220,7 +217,7 @@ json文档ID:1
      * 17:45:51.051 INFO  com.bosssoft.parb.page.test - 执行关闭连接操作...
      */
 
-    @Test
+  //  @Test
     public void learnTest() {
 
 

@@ -6,13 +6,12 @@ import com.dolphin422.common.exception.BusinessException;
 import com.dolphin422.system.dao.user.ISysUserDao;
 import com.dolphin422.system.model.user.SysUserModel;
 import com.dolphin422.system.service.api.user.ISysUserService;
-
 import java.util.Date;
 import java.util.List;
+import javax.annotation.Resource;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -29,7 +28,7 @@ public class SysUserServiceImpl extends BaseServiceImpl implements ISysUserServi
      */
     private Logger logger = LoggerFactory.getLogger(SysUserServiceImpl.class);
 
-    @Autowired
+    @Resource
     private ISysUserDao userDao;
 
     @Override
