@@ -1,6 +1,6 @@
 package com.dolphin422.common.filter;
 
-import com.dolphin422.common.enumeration.statuscode.business.BusinessStatusCodeEnum;
+import com.dolphin422.common.enumeration.statuscode.business.BusinessExceptionEnum;
 import com.dolphin422.common.exception.BusinessException;
 import java.io.IOException;
 import javax.servlet.Filter;
@@ -80,7 +80,7 @@ public class ContentTypeFilter extends HttpServlet implements Filter {
             return;
         }
         logger.debug("http请求ContentType:{}不符合规则", contentType);
-        throw new BusinessException(BusinessStatusCodeEnum.ILLEGAL_ARGUMENT, "http请求ContentType:{}不符合规则,请检查.",
+        throw new BusinessException(BusinessExceptionEnum.ILLEGAL_ARGUMENT, "http请求ContentType:{}不符合规则,请检查.",
             contentType);
 
 //      String utf8 = "charset=utf-8";

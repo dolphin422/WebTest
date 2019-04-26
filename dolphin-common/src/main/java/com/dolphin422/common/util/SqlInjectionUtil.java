@@ -1,6 +1,6 @@
 package com.dolphin422.common.util;
 
-import com.dolphin422.common.enumeration.statuscode.business.BusinessStatusCodeEnum;
+import com.dolphin422.common.enumeration.statuscode.business.BusinessExceptionEnum;
 import com.dolphin422.common.exception.BusinessException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -38,7 +38,7 @@ public class SqlInjectionUtil {
         if (matcher.find()) {
             logger.debug("未能通过校验的字符为---->({})", matcher.group(0));
             logger.debug("传入的原始字符串为---->({})", str);
-            throw new BusinessException(BusinessStatusCodeEnum.ILLEGAL_ARGUMENT,
+            throw new BusinessException(BusinessExceptionEnum.ILLEGAL_ARGUMENT,
                     "所提交内容含有未通过校验字符,请检查。该字符为：{}", matcher.group(0));
         }
     }

@@ -1,4 +1,4 @@
-package com.dolphin422.system.elasticsearch;
+package com.dolphin422.system.controller.elasticsearch;
 
 import com.dolphin422.elasticsearch.ElasticsearchUtil;
 import com.dolphin422.vo.TestVo;

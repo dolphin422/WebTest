@@ -1,7 +1,7 @@
 package com.dolphin422.common.exception;
 
 import com.dolphin422.common.base.BaseException;
-import com.dolphin422.common.enumeration.statuscode.business.BusinessStatusCodeEnum;
+import com.dolphin422.common.enumeration.statuscode.business.BusinessExceptionEnum;
 
 /**
  * @Description: 自定义业务异常类
@@ -16,8 +16,8 @@ public class BusinessException extends BaseException {
      * @return exceptionCode
      */
     @Override
-    public BusinessStatusCodeEnum getExceptionCode() {
-        return (BusinessStatusCodeEnum) super.exceptionCode;
+    public BusinessExceptionEnum getExceptionCode() {
+        return (BusinessExceptionEnum) super.exceptionCode;
     }
 
     /**
@@ -25,7 +25,7 @@ public class BusinessException extends BaseException {
      *
      * @param exceptionDesc the system description
      */
-    public BusinessException(BusinessStatusCodeEnum exceptionDesc) {
+    public BusinessException(BusinessExceptionEnum exceptionDesc) {
         super(exceptionDesc);
     }
 
@@ -35,7 +35,7 @@ public class BusinessException extends BaseException {
      * @param exceptionDesc the system description
      * @param exception     the system
      */
-    public BusinessException(BusinessStatusCodeEnum exceptionDesc,
+    public BusinessException(BusinessExceptionEnum exceptionDesc,
         Throwable exception) {
         super(exceptionDesc, exception);
     }
@@ -46,7 +46,7 @@ public class BusinessException extends BaseException {
      * @param exceptionDesc the system description
      * @param message       the message
      */
-    public BusinessException(BusinessStatusCodeEnum exceptionDesc,
+    public BusinessException(BusinessExceptionEnum exceptionDesc,
         String message) {
         super(exceptionDesc, message);
     }
@@ -58,7 +58,7 @@ public class BusinessException extends BaseException {
      * @param message       the message
      * @param args          the args
      */
-    public BusinessException(BusinessStatusCodeEnum exceptionDesc,
+    public BusinessException(BusinessExceptionEnum exceptionDesc,
         String message, Object... args) {
         super(exceptionDesc, message, args);
     }
@@ -70,7 +70,7 @@ public class BusinessException extends BaseException {
      * @param exception     the system
      * @param message       the message
      */
-    public BusinessException(BusinessStatusCodeEnum exceptionDesc,
+    public BusinessException(BusinessExceptionEnum exceptionDesc,
         Throwable exception, String message) {
         super(exceptionDesc, exception, message);
     }
@@ -83,7 +83,7 @@ public class BusinessException extends BaseException {
      * @param message       the message
      * @param args          the args
      */
-    public BusinessException(BusinessStatusCodeEnum exceptionDesc,
+    public BusinessException(BusinessExceptionEnum exceptionDesc,
         Throwable exception, String message, Object... args) {
         super(exceptionDesc, exception, message, args);
     }

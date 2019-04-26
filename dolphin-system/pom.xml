@@ -18,8 +18,6 @@
         <module>dolphin-system-dao-impl</module>
         <module>dolphin-system-model</module>
     </modules>
-
     <artifactId>dolphin-system</artifactId>
-
 
 </project>

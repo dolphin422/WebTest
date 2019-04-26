@@ -7,9 +7,12 @@ import com.dolphin422.common.base.IBaseStatusCodeEnum;
  * @author: DamonJT WIN
  * @createDate: 2018.12.14 2:09
  */
-public enum SystemExceptionCodeEnum implements IBaseStatusCodeEnum {
-    ERROR("700", "系统错误") {},
-    TIME_OUT("701", "连接超时") {};
+public enum SystemExceptionEnum implements IBaseStatusCodeEnum {
+    /**
+     * 系统错误
+     */
+    ERROR("7000", "系统错误") {},
+    TIME_OUT("7010", "连接超时") {};
 
     @Override
     public String getStatusCode() {
@@ -37,7 +40,7 @@ public enum SystemExceptionCodeEnum implements IBaseStatusCodeEnum {
      * @param statusCode  状态码
      * @param description 描述
      */
-    SystemExceptionCodeEnum(String statusCode, String description) {
+    SystemExceptionEnum(String statusCode, String description) {
         this.statusCode = statusCode;
         this.description = description;
     }

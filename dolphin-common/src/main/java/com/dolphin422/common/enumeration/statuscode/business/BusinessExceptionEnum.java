@@ -7,14 +7,13 @@ import com.dolphin422.common.base.IBaseStatusCodeEnum;
  * @author: DamonJT WIN
  * @createDate: 2018.12.11 23:39
  */
-public enum BusinessStatusCodeEnum implements IBaseStatusCodeEnum {
-
-    SUCCESS("200", "操作成功") {},
-    FAILURE("600", "操作失败") {},
-    ARGUMENT_NULL("450","参数为空") {},
-    ILLEGAL_ARGUMENT("451","非法参数") {}
-    ;
-
+public enum BusinessExceptionEnum implements IBaseStatusCodeEnum {
+    /**
+     * 操作失败
+     */
+    FAILURE("6000", "操作失败") {},
+    ARGUMENT_NULL("4500", "参数为空") {},
+    ILLEGAL_ARGUMENT("4510", "非法参数") {};
 
     @Override
     public String getStatusCode() {
@@ -42,7 +41,7 @@ public enum BusinessStatusCodeEnum implements IBaseStatusCodeEnum {
      * @param statusCode  状态码
      * @param description 信息
      */
-    BusinessStatusCodeEnum(String statusCode, String description) {
+    BusinessExceptionEnum(String statusCode, String description) {
         this.statusCode = statusCode;
         this.description = description;
     }

@@ -2,7 +2,7 @@ package com.dolphin422.common.exception;
 
 import com.dolphin422.common.base.BaseException;
 import com.dolphin422.common.base.IBaseStatusCodeEnum;
-import com.dolphin422.common.enumeration.statuscode.system.SystemExceptionCodeEnum;
+import com.dolphin422.common.enumeration.statuscode.system.SystemExceptionEnum;
 
 /**
  * @Description: 自定义系统异常
@@ -14,8 +14,8 @@ public class SystemException extends BaseException {
 
 
     @Override
-    public SystemExceptionCodeEnum getExceptionCode() {
-        return (SystemExceptionCodeEnum)super.exceptionCode;
+    public SystemExceptionEnum getExceptionCode() {
+        return (SystemExceptionEnum)super.exceptionCode;
     }
 
     /**
@@ -33,7 +33,7 @@ public class SystemException extends BaseException {
      * @param systemExceptionCode systemExceptionCode
      * @param exception           the system
      */
-    public SystemException(SystemExceptionCodeEnum systemExceptionCode,
+    public SystemException(SystemExceptionEnum systemExceptionCode,
         Throwable exception) {
         super(systemExceptionCode, exception);
     }
@@ -44,7 +44,7 @@ public class SystemException extends BaseException {
      * @param systemExceptionCode systemExceptionCode
      * @param message             the message
      */
-    public SystemException(SystemExceptionCodeEnum systemExceptionCode,
+    public SystemException(SystemExceptionEnum systemExceptionCode,
         String message) {
         super(systemExceptionCode, message);
     }
@@ -56,7 +56,7 @@ public class SystemException extends BaseException {
      * @param message             the message
      * @param args                the args
      */
-    public SystemException(SystemExceptionCodeEnum systemExceptionCode,
+    public SystemException(SystemExceptionEnum systemExceptionCode,
         String message, Object... args) {
         super(systemExceptionCode, message, args);
     }
@@ -68,7 +68,7 @@ public class SystemException extends BaseException {
      * @param exception           the system
      * @param message             the message
      */
-    public SystemException(SystemExceptionCodeEnum systemExceptionCode,
+    public SystemException(SystemExceptionEnum systemExceptionCode,
         Throwable exception, String message) {
         super(systemExceptionCode, exception, message);
     }
@@ -81,7 +81,7 @@ public class SystemException extends BaseException {
      * @param message             the message
      * @param args                the args
      */
-    public SystemException(SystemExceptionCodeEnum systemExceptionCode,
+    public SystemException(SystemExceptionEnum systemExceptionCode,
         Throwable exception, String message, Object... args) {
         super(systemExceptionCode, exception, message, args);
     }

@@ -8,6 +8,10 @@ import com.dolphin422.common.base.IBaseStatusCodeEnum;
  * @createDate: 2018.12.12 0:49
  */
 public enum HttpStatusEnum implements IBaseStatusCodeEnum {
+    /**
+     * 操作成功
+     */
+    SUCCESS(2000, "OK", "操作成功"),
 
     CONTINUE(100, "Continue", "请继续发送请求的剩余部分"),
     SWITCHING_PROTOCOLS(101, "Switching Protocols", "协议切换"),

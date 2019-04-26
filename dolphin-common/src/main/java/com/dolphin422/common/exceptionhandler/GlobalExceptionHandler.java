@@ -1,6 +1,6 @@
 package com.dolphin422.common.exceptionhandler;
 
-import com.dolphin422.common.enumeration.statuscode.system.SystemExceptionCodeEnum;
+import com.dolphin422.common.enumeration.statuscode.system.SystemExceptionEnum;
 import com.dolphin422.common.exception.BusinessException;
 import com.dolphin422.common.exception.SystemException;
 import com.dolphin422.common.returnvo.ReturnVo;
@@ -45,7 +45,7 @@ public class GlobalExceptionHandler {
     public ReturnVo errorHandler(Throwable ex) {
         String exName = ex.getClass().getName();
         logger.error("程序异常信息:{}:{}", exName, ex.getMessage(), ex);
-        ReturnVo<String> stringReturnVo = ReturnVo.failVo(SystemExceptionCodeEnum.ERROR);
+        ReturnVo<String> stringReturnVo = ReturnVo.failVo(SystemExceptionEnum.ERROR);
         stringReturnVo.setMessage(exName + ":" + ex.getMessage());
         return stringReturnVo;
     }

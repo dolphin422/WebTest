@@ -1,8 +1,8 @@
 package com.dolphin422.business.controller;
 
 import com.dolphin422.common.base.BaseController;
-import com.dolphin422.common.enumeration.statuscode.business.BusinessStatusCodeEnum;
-import com.dolphin422.common.enumeration.statuscode.system.SystemExceptionCodeEnum;
+import com.dolphin422.common.enumeration.statuscode.business.BusinessExceptionEnum;
+import com.dolphin422.common.enumeration.statuscode.system.SystemExceptionEnum;
 import com.dolphin422.common.exception.BusinessException;
 import com.dolphin422.common.exception.SystemException;
 import com.dolphin422.common.util.UUIDGenerator;
@@ -29,14 +29,14 @@ public class BusinessTestController extends BaseController {
     @RequestMapping("/1")
     @ResponseBody
     public ReturnVo sayReturnVo1(String name) {
-        throw new BusinessException(BusinessStatusCodeEnum.FAILURE, "BusinessExcep{}tion.600",name);
+        throw new BusinessException(BusinessExceptionEnum.FAILURE, "BusinessExcep{}tion.600",name);
         //return ReturnVo.successVo(name);
     }
 
     @RequestMapping("/2")
     @ResponseBody
     public ReturnVo sayReturnVo2(String name) {
-        throw new SystemException(SystemExceptionCodeEnum.TIME_OUT, "SystemExceptionCod{}eEnum.701",name);
+        throw new SystemException(SystemExceptionEnum.TIME_OUT, "SystemExceptionCod{}eEnum.701",name);
         //return ReturnVo.successVo(name);
     }
 

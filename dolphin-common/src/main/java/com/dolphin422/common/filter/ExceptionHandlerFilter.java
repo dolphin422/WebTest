@@ -1,6 +1,6 @@
 package com.dolphin422.common.filter;
 
-import com.dolphin422.common.enumeration.statuscode.system.SystemExceptionCodeEnum;
+import com.dolphin422.common.enumeration.statuscode.system.SystemExceptionEnum;
 import com.dolphin422.common.exception.BusinessException;
 import com.dolphin422.common.returnvo.ReturnVo;
 import com.google.gson.Gson;
@@ -36,11 +36,11 @@ public class ExceptionHandlerFilter extends OncePerRequestFilter {
             Gson gson = new Gson();
             httpServletResponse.getWriter().write(gson.toJson(stringReturnVo));
         } catch (Exception ex) {
-            ReturnVo<String> stringReturnVo = ReturnVo.failVo(SystemExceptionCodeEnum.ERROR);
+            ReturnVo<String> stringReturnVo = ReturnVo.failVo(SystemExceptionEnum.ERROR);
             String exName = ex.getClass().getName();
             logger.error("程序异常,信息:{}:{}", exName, ex.getMessage(), ex);
             stringReturnVo.setMessage("程序异常,信息:" + exName);
-            httpServletResponse.setStatus(Integer.valueOf(SystemExceptionCodeEnum.ERROR.getStatusCode()));
+            httpServletResponse.setStatus(Integer.valueOf(SystemExceptionEnum.ERROR.getStatusCode()));
             Gson gson = new Gson();
             httpServletResponse.getWriter().write(gson.toJson(stringReturnVo));
         }

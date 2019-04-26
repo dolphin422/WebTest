@@ -1,8 +1,8 @@
 package com.dolphin422.common.returnvo;
 
 import com.dolphin422.common.base.BaseVo;
-import com.dolphin422.common.enumeration.statuscode.business.BusinessStatusCodeEnum;
 import com.dolphin422.common.base.IBaseStatusCodeEnum;
+import com.dolphin422.common.enumeration.statuscode.http.HttpStatusEnum;
 import com.dolphin422.common.util.DateUtil;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -45,8 +45,8 @@ public class ReturnVo<T> extends BaseVo {
      * @return ReturnVo statusCode :200 message : 操作成功
      */
     public static ReturnVo<String> successVo() {
-        return new ReturnVo<String>(BusinessStatusCodeEnum.SUCCESS.getStatusCode(),
-                BusinessStatusCodeEnum.SUCCESS.getDescription());
+        return new ReturnVo<String>(HttpStatusEnum.SUCCESS.getStatusCode(),
+            HttpStatusEnum.SUCCESS.getDescription());
     }
 
     /**
@@ -70,8 +70,8 @@ public class ReturnVo<T> extends BaseVo {
      */
     public static ReturnVo<String> successVo(Object data) {
         ReturnVo<String> jsonDataReturnVo = new ReturnVo<String>(
-                BusinessStatusCodeEnum.SUCCESS.getStatusCode(),
-                BusinessStatusCodeEnum.SUCCESS.getDescription());
+                HttpStatusEnum.SUCCESS.getStatusCode(),
+                HttpStatusEnum.SUCCESS.getDescription());
         if (null == data) {
             return jsonDataReturnVo;
         }
@@ -94,8 +94,8 @@ public class ReturnVo<T> extends BaseVo {
      * @return ReturnVo statusCode :200,message : 操作成功 , data:原始业务数据
      */
     public static <T> ReturnVo<T> successVoWithOriginalData(T data) {
-        ReturnVo<T> originalDataReturnVo = new ReturnVo<T>(BusinessStatusCodeEnum.SUCCESS.getStatusCode(),
-                BusinessStatusCodeEnum.SUCCESS.getDescription());
+        ReturnVo<T> originalDataReturnVo = new ReturnVo<T>(HttpStatusEnum.SUCCESS.getStatusCode(),
+                HttpStatusEnum.SUCCESS.getDescription());
         originalDataReturnVo.setData(data);
         return originalDataReturnVo;
     }
