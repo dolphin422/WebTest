@@ -1,4 +1,4 @@
-package com.dolphin422.system.restcontroller.user;
+package com.dolphin422.system.controller.user;
 
 import com.dolphin422.common.base.BaseController;
 import com.dolphin422.common.exception.BusinessException;
