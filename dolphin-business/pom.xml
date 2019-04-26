@@ -16,6 +16,7 @@
         <module>dolphin-business-dao-api</module>
         <module>dolphin-business-dao-impl</module>
         <module>dolphin-business-model</module>
+        <module>dolphin-business-common</module>
     </modules>
 
     <artifactId>dolphin-business</artifactId>

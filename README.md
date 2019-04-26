@@ -27,6 +27,7 @@ Spring Boot Maven Web
 ## 依赖关系
 ![项目依赖关系图](https://github.com/dolphin422/github_repository/blob/master/img-folder/dolphin/%E9%A1%B9%E7%9B%AE%E5%8C%85%E4%BE%9D%E8%B5%96%E5%85%B3%E7%B3%BB.png)
 ## 主要更新
+- 14、2019.04.26：add Lombok and modules dolphin-business-common dolphin-system-common
 - 13、2019.04.17：Add CustomParameterizedType 加强GSON泛型封装、优化异常处理、
                     解决返回数据浏览器中文乱码、解决使用GSON转化Swagger2前端页面展示错误的问题
 - 12、2019.04.10：增加business-service-impl对system-service-impl的依赖
