@@ -3,7 +3,6 @@ package com.dolphin422.system.service.impl.rabbitmqlistener;
 import java.util.Date;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.stereotype.Service;
 
 /**
@@ -23,7 +22,7 @@ public class RabbitMqListener {
      *
      * @param s
      */
-    @RabbitListener(queues = "gpcmsKeyMisconductAdd")
+   // @RabbitListener(queues = "mqTestQueueTest")
     public void gpcmsKeyMisconductAdd(String s) {
         logger.debug("------{}-----获取到的信息为:{}", new Date(), s);
     }

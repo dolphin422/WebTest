@@ -1,9 +1,13 @@
-# dolphin
+# Dolphin
 Spring Boot Maven Web
 
 ---
 ## 项目说明
-  SpringBoot项目,Maven构建,不断更新中
+* 持续更新...
+* Springboot：2.1.0
+* JDK：1.8
+* Maven
+
 
 ## 项目结构
 	|--dolphin (pom-parent)

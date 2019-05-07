@@ -32,6 +32,6 @@ public class RabbitMqController extends BaseController {
     public ReturnVo sendStringMessage(@PathVariable String queueName, @PathVariable String message)
         throws BusinessException {
         rabbitMqService.sendStringMessage(topicExchangeName, queueName, message);
-        return ReturnVo.successVo();    }
-
+        return ReturnVo.successVo();
+    }
 }

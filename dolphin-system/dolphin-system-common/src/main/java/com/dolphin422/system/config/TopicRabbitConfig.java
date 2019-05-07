@@ -4,8 +4,8 @@ import org.springframework.amqp.core.Binding;
 import org.springframework.amqp.core.BindingBuilder;
 import org.springframework.amqp.core.Queue;
 import org.springframework.amqp.core.TopicExchange;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -15,6 +15,7 @@ import org.springframework.context.annotation.Configuration;
  * @createDate 2019.04.26 14:35
  */
 @Configuration
+@ConditionalOnProperty(name = "spring.rabbitmq.enable", havingValue = "true")
 public class TopicRabbitConfig {
     @Value("${mq.topicExchangeName}")
     private String topicExchangeName;
@@ -31,6 +32,7 @@ public class TopicRabbitConfig {
 
     /**
      * 队列
+     * durable = false  不持久化
      *
      * @return
      */
@@ -93,7 +95,6 @@ public class TopicRabbitConfig {
         return BindingBuilder.bind(mqExpertQueueUpdate).to(gpcmsTopicExchange).with("mqExpertQueueUpdate");
     }
 
-
     @Bean
     Queue mqPurchaserQueueAdd() {
         return new Queue("mqPurchaserQueueAdd", false);
@@ -103,13 +104,16 @@ public class TopicRabbitConfig {
     Binding mqPurchaserQueueAddBinding(Queue mqPurchaserQueueAdd, TopicExchange gpcmsTopicExchange) {
         return BindingBuilder.bind(mqPurchaserQueueAdd).to(gpcmsTopicExchange).with("mqPurchaserQueueAdd");
     }
+
     @Bean
     Queue mqPurchaserQueueUpdate() {
         return new Queue("mqPurchaserQueueUpdate", false);
     }
+
     @Bean
     Binding mqPurchaserQueueUpdateBinding(Queue mqPurchaserQueueUpdate, TopicExchange gpcmsTopicExchange) {
-        return BindingBuilder.bind(mqPurchaserQueueUpdate).to(gpcmsTopicExchange).with("mqPurchaserQueueUpdate");
+        return BindingBuilder.bind(mqPurchaserQueueUpdate).to(gpcmsTopicExchange)
+            .with("mqPurchaserQueueUpdate");
     }
 
     @Bean
@@ -138,7 +142,8 @@ public class TopicRabbitConfig {
     }
 
     @Bean
-    Binding mqProjectAndResultQueueAddBinding(Queue mqProjectAndResultQueueAdd, TopicExchange gpcmsTopicExchange) {
+    Binding mqProjectAndResultQueueAddBinding(Queue mqProjectAndResultQueueAdd,
+        TopicExchange gpcmsTopicExchange) {
         return BindingBuilder.bind(mqProjectAndResultQueueAdd).to(gpcmsTopicExchange)
             .with("mqProjectAndResultQueueAdd");
     }
@@ -157,7 +162,7 @@ public class TopicRabbitConfig {
 
     @Bean(name = "mqTestQueueTest")
     Queue mqTestQueueTest() {
-        return new Queue("mqTestQueueTest");
+        return new Queue("mqTestQueueTest", false);
     }
 
     /**
@@ -167,16 +172,10 @@ public class TopicRabbitConfig {
      * @date 2018年7月19日 上午12:20:09
      */
     @Bean
-    Binding mqTestQueueTestBinding(
-        @Qualifier("mqTestQueueTest") Queue gpcmsKeySeriousAdd,
-        @Qualifier("${mq.topicExchangeName}") TopicExchange gpcmsTopicExchange) {
-        Binding testQueueTest = BindingBuilder.bind(gpcmsKeySeriousAdd).to(gpcmsTopicExchange)
+    Binding mqTestQueueTestBinding(Queue mqTestQueueTest, TopicExchange gpcmsTopicExchange) {
+        Binding testQueueTest = BindingBuilder.bind(mqTestQueueTest).to(gpcmsTopicExchange)
             .with("mqTestQueueTest");
         return testQueueTest;
     }
 
-   /* @Bean
-    Binding mqTestQueueTestBinding(Queue mqTestQueueTest, TopicExchange gpcmsTopicExchange) {
-        return BindingBuilder.bind(mqTestQueueTest).to(gpcmsTopicExchange).with("mqTestQueueTest");
-    }*/
 }
