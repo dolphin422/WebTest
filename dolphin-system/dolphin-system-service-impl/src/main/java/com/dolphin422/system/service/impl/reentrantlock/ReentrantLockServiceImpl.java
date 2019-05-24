@@ -7,7 +7,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.util.concurrent.locks.Condition;
-import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
 /**
@@ -25,14 +24,27 @@ public class ReentrantLockServiceImpl extends BaseServiceImpl implements IReentr
     private ReentrantLock lock = new ReentrantLock();
     private Condition condition = lock.newCondition();
 
+    @Override
     public void await() {
         try {
             lock.lock();
             logger.info("--时间:{}--AA----", System.currentTimeMillis());
             condition.await();
+            //查询当前线程保持此锁定的个数
             int holdCount = lock.getHoldCount();
+            //返回正等待获取此锁定的线程估计数
             int queueLength = lock.getQueueLength();
+            //返回等待与此锁定相关的给定条件Condition的线程计数
             int waitQueueLength = lock.getWaitQueueLength(condition);
+
+            //判断是不是公平锁：默认情况下，ReentrantLock使用的是非公平锁
+            boolean isFair = lock.isFair();
+            //查询当前线程是否保持此锁定
+            boolean heldByCurrentThread = lock.isHeldByCurrentThread();
+            //查询此锁定是否由任意线程保持
+            boolean locked = lock.isLocked();
+
+
         } catch (InterruptedException e) {
             e.printStackTrace();
         } finally {
