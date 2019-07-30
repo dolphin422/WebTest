@@ -56,6 +56,8 @@ public class GsonTest {
         String gsonStr = gson.toJson(gsonListObject);
         Class<TestVo> testVoClass = TestVo.class;
         GsonVo<List<TestVo>> gsonListVo = this.getGsonListVo(gsonStr, testVoClass);
+        List<TestVo> t = gsonListVo.getT();
+        GsonVo<List<TestVo>> gsonListVo1 = this.getGsonListVo(gsonStr, testVoClass);
         logger.info("-----------------{}--object值为---->{}", System.currentTimeMillis(), gsonListVo);
     }
 
