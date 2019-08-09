@@ -7,6 +7,8 @@ import com.dolphin422.system.model.user.SysUserModel;
 import com.dolphin422.system.service.api.user.ISysUserService;
 import io.swagger.annotations.ApiOperation;
 import java.util.List;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -23,6 +25,10 @@ import springfox.documentation.annotations.ApiIgnore;
 @RestController
 @RequestMapping("/v1/user")
 public class UserRestController extends BaseController {
+    /**
+    * logger
+    */
+    private Logger logger = LoggerFactory.getLogger(UserRestController.class);
 
     @Autowired
     private ISysUserService sysUserService;
@@ -31,6 +37,7 @@ public class UserRestController extends BaseController {
     @RequestMapping(value = "", method = RequestMethod.GET)
     public ReturnVo getUsers() throws BusinessException {
         List<SysUserModel> userList = sysUserService.searchListByPage();
+        logger.info("service:{}",sysUserService.getClass().getName());
         return ReturnVo.successVoWithOriginalData(userList);
     }
 

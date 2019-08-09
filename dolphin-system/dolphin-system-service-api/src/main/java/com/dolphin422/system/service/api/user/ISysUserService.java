@@ -62,4 +62,12 @@ public interface ISysUserService {
      * @throws BusinessException
      */
     void updateUserSelective(SysUserModel sysUserModel) throws BusinessException;
+
+    /**
+     *
+     * @param userId
+     * @return
+     * @throws BusinessException
+     */
+    String getUserName(String userId) throws BusinessException;
 }

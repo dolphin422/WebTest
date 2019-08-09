@@ -1,4 +1,4 @@
-package com.dolphin422.business.controller;
+package com.dolphin422.business.controller.test;
 
 import com.dolphin422.common.base.BaseController;
 import com.dolphin422.common.enumeration.statuscode.business.BusinessExceptionEnum;
