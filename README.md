@@ -33,6 +33,8 @@ Spring Boot Maven Web
 ## 依赖关系
 ![项目依赖关系图](https://github.com/dolphin422/github_repository/blob/master/img-folder/dolphin/%E9%A1%B9%E7%9B%AE%E5%8C%85%E4%BE%9D%E8%B5%96%E5%85%B3%E7%B3%BB.png)
 ## 主要更新
+* 15、2019.08.10:
+	* test git
 * 14、2019.04.26：
 	* Add Lombok 
 	* Add modules dolphin-business-common、dolphin-system-common
