@@ -3,6 +3,7 @@ package com.dolphin422.system.service.impl.user;
 import com.dolphin422.common.base.BaseServiceImpl;
 import com.dolphin422.common.enumeration.statuscode.business.BusinessExceptionEnum;
 import com.dolphin422.common.exception.BusinessException;
+import com.dolphin422.common.util.DateUtil;
 import com.dolphin422.system.dao.user.ISysUserDao;
 import com.dolphin422.system.model.user.SysUserModel;
 import com.dolphin422.system.service.api.user.ISysUserService;
@@ -32,6 +33,13 @@ public class SysUserServiceImpl extends BaseServiceImpl implements ISysUserServi
     private ISysUserDao userDao;
 
     @Override
+    public String getUserName(String userId) throws BusinessException {
+        String currentDateTime = DateUtil.getCurrentDateTime();
+        logger.info("--现在时间:{}---实际对象SysUserServiceImpl-传入--({})--", currentDateTime,userId);
+        return currentDateTime + ":" + userId;
+    }
+
+    @Override
     public List<SysUserModel> searchListByPage() throws BusinessException {
         List<SysUserModel> sysUserModelList = userDao.selectAll();
         SysUserModel sysUserModel = new SysUserModel();
@@ -56,7 +64,9 @@ public class SysUserServiceImpl extends BaseServiceImpl implements ISysUserServi
             logger.debug("查询用户传入主键Id为空");
             throw new BusinessException(BusinessExceptionEnum.ARGUMENT_NULL, "查询用户传入主键Id为空");
         }
-        return userDao.selectByPrimaryKey(id);
+
+        return null;
+        // return userDao.selectByPrimaryKey(id);
     }
 
     @Override
