@@ -5,6 +5,8 @@ import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.concurrent.atomic.AtomicInteger;
+
 /**
  * @Description:
  * @author: DamonJT WIN
@@ -15,6 +17,14 @@ public class MathUtilTest {
      * logger
      */
     private Logger logger = LoggerFactory.getLogger(MathUtilTest.class);
+
+    @Test
+    public void countAdd() {
+        AtomicInteger count = new AtomicInteger();
+        logger.info("count---{}", count);
+        count.addAndGet(1);
+        logger.info("count---{}", count);
+    }
 
     @Test
     public void mathUtilTest() {

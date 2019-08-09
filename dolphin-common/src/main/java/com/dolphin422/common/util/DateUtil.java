@@ -1,5 +1,7 @@
 package com.dolphin422.common.util;
 
+import org.apache.commons.lang3.time.DateUtils;
+
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -52,6 +54,20 @@ public class DateUtil {
      * 时区
      */
     private static ZoneId zone = ZoneId.systemDefault();
+    /**
+     * 【强制】SimpleDateFormat 是线程不安全的类，一般不要定义为 static变量，
+     * 如果定义为 static，必须加锁，或者使用 DateUtils工具类。
+     * 正例：注意线程安全，使用 DateUtils。亦推荐如下处理：
+     *
+     * ：如果是JDK8 的应用，可以使用 Instant 代替 Date，LocalDateTime 代替 Calendar， DateTimeFormatter 代替SimpleDateFormat，
+     * 官方给出的解释：simple beautiful strong immutable thread-safe。
+     */
+    private static final ThreadLocal<DateFormat> df = new ThreadLocal<DateFormat>() {
+        @Override
+        protected DateFormat initialValue() {
+            return new SimpleDateFormat("yyyy-MM-dd");
+        }
+    };
 
     /**
      * 当前系统日期时间
