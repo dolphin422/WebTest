@@ -1,5 +1,6 @@
 package com.dolphin422.test;
 
+import com.dolphin422.common.util.DateUtil;
 import com.dolphin422.common.util.UUIDGenerator;
 import com.google.gson.Gson;
 import org.apache.commons.lang3.StringUtils;
@@ -8,7 +9,10 @@ import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.poifs.filesystem.POIFSFileSystem;
+import org.apache.poi.ss.usermodel.Cell;
 import org.junit.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -20,22 +24,53 @@ import java.util.List;
  * @CreateDate: 2018.07.03 11:01
  */
 public class ReadExcel2Mysql {
+    /**
+     * logger
+     */
+    private Logger log = LoggerFactory.getLogger(ReadExcel2Mysql.class);
 
 
     @Test
     public void getExcel() throws Exception {
-        String sorFilePath = "D:\\0000山西购买服务\\政府购买服务目录\\test";
-        List<HSSFWorkbook> workbookList = getExcelList(sorFilePath);
-        System.out.println("数据长度值 workbookList---->" + workbookList.size());
-        List<GuidingCatalogue> allGuidingCatalogueList = new ArrayList<>(workbookList.size());
-        for (HSSFWorkbook workbook : workbookList) {
-            List<GuidingCatalogue> fileVoList = changeExcel2Vo(workbook);
-            allGuidingCatalogueList.addAll(fileVoList);
+        String filePath = "D:\\0000山西购买服务\\政府购买服务目录\\test";
+        List<CatalogExcelVo> excelList = this.getExcelList(filePath);
+        log.info("数据长度值 excelList---->" + excelList.size());
+        List<GuidingCatalogue> allGuidingCatalogueList = new ArrayList<>();
+        int totalNum = 0;
+        int errorNum = 0;
+        List<String> errorFileNameList = new ArrayList<>();
+        for (CatalogExcelVo catalogExcelVo : excelList) {
+            totalNum++;
+            List<GuidingCatalogue> guidingCatalogueList = new ArrayList<>();
+            HSSFWorkbook workbook = catalogExcelVo.getWorkbook();
+            String fileName = catalogExcelVo.getName();
+            try {
+                log.info("---序号:{}--fileName--{}", totalNum, fileName);
+                guidingCatalogueList = changeExcel2Vo(workbook);
+            } catch (Exception ex) {
+                errorNum++;
+                errorFileNameList.add(fileName);
+                log.info("---序号:{}--errorFileName--{}", totalNum, fileName);
+
+            }
+            allGuidingCatalogueList.addAll(guidingCatalogueList);
         }
-        Gson gson = new Gson();
-        String json = gson.toJson(allGuidingCatalogueList);
-        System.out.println("数据 json---->" + json);
-        System.out.println("数据长度值 allGuidingCatalogueList---->" + allGuidingCatalogueList.size());
+        //Gson gson = new Gson();
+        //String json = gson.toJson(allGuidingCatalogueList);
+        //System.out.println("数据 json---->" + json);
+        log.info("数据长度值 allGuidingCatalogueList---->" + allGuidingCatalogueList.size());
+        if (allGuidingCatalogueList.size() > 0) {
+            for (GuidingCatalogue guidingCatalogue : allGuidingCatalogueList) {
+                guidingCatalogue.setStartDate(DateUtil.getCurrentDateTime());
+                guidingCatalogue.setEndDate(DateUtil.getCurrentDateTime());
+                guidingCatalogue.setYear(2019);
+            }
+        }
+        CatalogExcelVo result = new CatalogExcelVo();
+        result.setGuidingCatalogueList(allGuidingCatalogueList);
+        result.setTotalFileNum(totalNum);
+        result.setErrorFileNum(errorNum);
+        result.setErrorFileNameList(errorFileNameList);
     }
 
     /**
@@ -45,22 +80,26 @@ public class ReadExcel2Mysql {
      * @return
      * @throws Exception
      */
-    public List<HSSFWorkbook> getExcelList(String filePath) throws Exception {
-        List<HSSFWorkbook> workbookList = new ArrayList<>();
+    private List<CatalogExcelVo> getExcelList(String filePath) throws Exception {
+        List<CatalogExcelVo> workbookList = new ArrayList<>();
         File file = new File(filePath);
         if (file.isDirectory()) {
             File[] files = file.listFiles();
             for (int i = 0; i < files.length; i++) {
                 File fileExcel = files[i];
                 FileInputStream fileInputStream = new FileInputStream(fileExcel);
-                //String name = fileExcel.getName();
+                String name = fileExcel.getName();
                 //String absolutePath = fileExcel.getAbsolutePath();
+                CatalogExcelVo catalogExcelVo = new CatalogExcelVo();
                 HSSFWorkbook workbook = new HSSFWorkbook(new POIFSFileSystem(fileInputStream));
-                workbookList.add(workbook);
+                catalogExcelVo.setWorkbook(workbook);
+                catalogExcelVo.setName(name);
+                workbookList.add(catalogExcelVo);
             }
         }
         return workbookList;
     }
+
 
     /**
      * 转换Excel到Vo
@@ -68,12 +107,14 @@ public class ReadExcel2Mysql {
      * @param workbook
      * @return
      */
-    public List<GuidingCatalogue> changeExcel2Vo(HSSFWorkbook workbook) {
+    private List<GuidingCatalogue> changeExcel2Vo(HSSFWorkbook workbook) {
         List<GuidingCatalogue> tarGuidingCatalogueList = new ArrayList<>();
         //获取页签:获取一共有多少sheet，可遍历
         //int numberOfSheets = workbook.getNumberOfSheets();
         //只取第一个sheet
         HSSFSheet sheet = workbook.getSheetAt(0);
+        // int lastRowNum = sheet.getLastRowNum();
+
         //第一行是标题 单位信息等
         HSSFRow firstRow = sheet.getRow(0);
         HSSFCell titleCell = firstRow.getCell(0);
@@ -85,13 +126,18 @@ public class ReadExcel2Mysql {
         rootGuidingCatalogue.setCatalogName(titleName);
         rootGuidingCatalogue.setCatalogNode("1");
         HSSFCell codeCell = firstRow.getCell(1);
+        //设置类型
+        codeCell.setCellType(Cell.CELL_TYPE_STRING);
         String orgCode = codeCell.getStringCellValue();
         rootGuidingCatalogue.setCatalogCode(orgCode);
         rootGuidingCatalogue.setPurSubjectName(titleName);
         rootGuidingCatalogue.setPurSubjectCode(orgCode);
+        rootGuidingCatalogue.setPurSubjectGuid(orgCode);
         tarGuidingCatalogueList.add(rootGuidingCatalogue);
         //获取sheet中一共有多少行，从第三行开始数据数据
         int numberOfRows = sheet.getPhysicalNumberOfRows();
+        //log.info("----------title:{}-----lastRowNum:{}-----numberOfRows:{}", titleName, lastRowNum,
+        //   numberOfRows);
         //判断父子关系
         GuidingCatalogue preCatalogue2 = new GuidingCatalogue();
         GuidingCatalogue preCatalogue3 = new GuidingCatalogue();
@@ -103,12 +149,16 @@ public class ReadExcel2Mysql {
             String uuid = UUIDGenerator.getUUID();
             guidingCatalogue.setPurSubjectName(titleName);
             guidingCatalogue.setPurSubjectCode(orgCode);
+            guidingCatalogue.setPurSubjectGuid(orgCode);
             guidingCatalogue.setRegionCode("140001");
             guidingCatalogue.setCatalogGuid(uuid);
             //取该行
             HSSFRow row = sheet.getRow(j);
             //取列  第一列是编码
-            HSSFCell cell0 = row.getCell(0);
+            HSSFCell cell0 = null;
+
+            cell0 = row.getCell(0);
+
             if (null != cell0) {
                 String stringCellValue = cell0.getStringCellValue();
                 if (StringUtils.isNotBlank(stringCellValue)) {
@@ -131,7 +181,7 @@ public class ReadExcel2Mysql {
                     guidingCatalogue.setCatalogName(stringCellValue);
                     guidingCatalogue.setCatalogNode("2");
                     guidingCatalogue.setFatherCatalogCode(rootGuidingCatalogue.getCatalogCode());
-                    guidingCatalogue.setFatherCatalogName(rootGuidingCatalogue.getFatherCatalogName());
+                    guidingCatalogue.setFatherCatalogName(rootGuidingCatalogue.getCatalogName());
                     guidingCatalogue.setFatherCatalogGuid(rootGuidingCatalogue.getCatalogGuid());
                     preCatalogue2 = guidingCatalogue;
                 }
@@ -144,7 +194,7 @@ public class ReadExcel2Mysql {
                     guidingCatalogue.setCatalogName(stringCellValue);
                     guidingCatalogue.setCatalogNode("3");
                     guidingCatalogue.setFatherCatalogCode(preCatalogue2.getCatalogCode());
-                    guidingCatalogue.setFatherCatalogName(preCatalogue2.getFatherCatalogName());
+                    guidingCatalogue.setFatherCatalogName(preCatalogue2.getCatalogName());
                     guidingCatalogue.setFatherCatalogGuid(preCatalogue2.getCatalogGuid());
                     preCatalogue3 = guidingCatalogue;
                 }
@@ -157,7 +207,7 @@ public class ReadExcel2Mysql {
                     guidingCatalogue.setCatalogName(stringCellValue);
                     guidingCatalogue.setCatalogNode("4");
                     guidingCatalogue.setFatherCatalogCode(preCatalogue3.getCatalogCode());
-                    guidingCatalogue.setFatherCatalogName(preCatalogue3.getFatherCatalogName());
+                    guidingCatalogue.setFatherCatalogName(preCatalogue3.getCatalogName());
                     guidingCatalogue.setFatherCatalogGuid(preCatalogue3.getCatalogGuid());
                     preCatalogue4 = guidingCatalogue;
                 }
@@ -170,7 +220,7 @@ public class ReadExcel2Mysql {
                     guidingCatalogue.setCatalogName(stringCellValue);
                     guidingCatalogue.setCatalogNode("5");
                     guidingCatalogue.setFatherCatalogCode(preCatalogue4.getCatalogCode());
-                    guidingCatalogue.setFatherCatalogName(preCatalogue4.getFatherCatalogName());
+                    guidingCatalogue.setFatherCatalogName(preCatalogue4.getCatalogName());
                     guidingCatalogue.setFatherCatalogGuid(preCatalogue4.getCatalogGuid());
                 }
             }
