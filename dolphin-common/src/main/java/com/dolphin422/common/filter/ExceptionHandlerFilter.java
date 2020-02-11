@@ -6,6 +6,7 @@ import com.dolphin422.common.returnvo.ReturnVo;
 import com.google.gson.Gson;
 import java.io.IOException;
 import javax.servlet.FilterChain;
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.slf4j.Logger;
@@ -25,15 +26,27 @@ public class ExceptionHandlerFilter extends OncePerRequestFilter {
 
     @Override
     protected void doFilterInternal(HttpServletRequest httpServletRequest,
-        HttpServletResponse httpServletResponse, FilterChain filterChain)
-        throws IOException {
+                                    HttpServletResponse httpServletResponse, FilterChain filterChain)
+            throws IOException {
         try {
             filterChain.doFilter(httpServletRequest, httpServletResponse);
         } catch (BusinessException be) {
             ReturnVo<String> stringReturnVo = ReturnVo.failVo(be.getExceptionCode());
             stringReturnVo.setMessage(be.getMessage());
-            httpServletResponse.setStatus(Integer.valueOf(be.getExceptionCode().getStatusCode()));
+            httpServletResponse.setStatus(Integer.parseInt(be.getExceptionCode().getStatusCode()));
             Gson gson = new Gson();
+            httpServletResponse.getWriter().write(gson.toJson(stringReturnVo));
+        } catch (ServletException gb) {
+            Throwable cause = gb.getCause();
+            ReturnVo<String> stringReturnVo = ReturnVo.failVo(SystemExceptionEnum.ERROR);
+            stringReturnVo.setMessage("操作失败,请联系系统管理员");
+            if (cause instanceof BusinessException) {
+                BusinessException ge = (BusinessException) cause;
+                stringReturnVo = ReturnVo.failVo(ge.getExceptionCode());
+                stringReturnVo.setMessage(ge.getMessage());
+            }
+            Gson gson = new Gson();
+            httpServletResponse.setCharacterEncoding("UTF-8");
             httpServletResponse.getWriter().write(gson.toJson(stringReturnVo));
         } catch (Exception ex) {
             ReturnVo<String> stringReturnVo = ReturnVo.failVo(SystemExceptionEnum.ERROR);
