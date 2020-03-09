@@ -2,20 +2,15 @@ package com.dolphin422.system.controller.test;
 
 import com.dolphin422.common.base.BaseController;
 import com.dolphin422.common.util.UUIDGenerator;
-
 import java.util.Date;
-
-
-import org.apache.catalina.session.StandardManager;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  * @Description: 系统模块 请求处理层
@@ -48,7 +43,7 @@ public class SystemTestController extends BaseController {
                 UUIDGenerator.getUUID();
     }
 
-    @RequestMapping(value = "/{abc}/{cd}", method = RequestMethod.POST)
+    @RequestMapping(value = "/{abc}/{cd}/one", method = RequestMethod.POST)
     @ResponseBody
     public String testRequest(HttpServletRequest request, HttpServletResponse response) {
 
