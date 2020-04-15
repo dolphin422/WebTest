@@ -1,6 +1,5 @@
 package com.dolphin422;
 
-import cn.chaconne.credit.service.SDKServiceImpl;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
@@ -21,11 +20,10 @@ public class DolphinApplication extends SpringBootServletInitializer {
     protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
         return application.sources(DolphinApplication.class);
     }
+
     public DolphinApplication() throws Exception {
         super();
 
-       SDKServiceImpl.config("/Users/djt/iWork/IdeaProjects/cdms4.4/cdms-web/src/main/resources/application.yml",
-            "/Users/djt/iWork/IdeaProjects/cdms4.4/cdms-web/src/main/resources/config/bcSDK/DB.xml");
     }
 
 }
