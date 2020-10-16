@@ -24,7 +24,6 @@ public class DateUtilTest {
         logger.info("--{}--currentDate 值为------>{}", System.currentTimeMillis(), currentDate);
         String currentTime = DateUtil.getCurrentTime();
         logger.info("--{}--currentTime 值为------>{}", System.currentTimeMillis(), currentTime);
-
     }
 
 }
