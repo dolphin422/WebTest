@@ -57,10 +57,13 @@ public class ExceptionHandlerFilter extends OncePerRequestFilter {
             logger.error("程序异常,信息:{}:{}", exName, ex.getMessage(), ex);
             stringReturnVo.setMessage("程序异常,信息:" + exName);
             httpServletResponse.setStatus(Integer.parseInt(SystemExceptionEnum.ERROR.getStatusCode()));
-            httpServletResponse.setHeader("Content-type", "text/html;charset=UTF-8");
-            httpServletResponse.setCharacterEncoding("UTF-8");
+//            httpServletResponse.setHeader("Content-type", "text/html;charset=UTF-8");
+//            httpServletResponse.setCharacterEncoding("UTF-8");
+            httpServletResponse.setContentType("application/json; charset=UTF-8");
             Gson gson = new Gson();
             httpServletResponse.getWriter().write(gson.toJson(stringReturnVo));
+
+
         }
     }
 }
