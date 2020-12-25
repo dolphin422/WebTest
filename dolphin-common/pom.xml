@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
         <artifactId>dolphin</artifactId>
         <groupId>com.dolphin422</groupId>
@@ -12,11 +12,11 @@
     <artifactId>dolphin-common</artifactId>
 
     <dependencies>
-        <dependency>
-            <groupId>org.fisco-bcos</groupId>
-            <artifactId>web3sdk</artifactId>
-            <version>2.1.0</version>
-        </dependency>
+        <!--       <dependency>
+                   <groupId>org.fisco-bcos</groupId>
+                   <artifactId>web3sdk</artifactId>
+                   <version>2.1.0</version>
+               </dependency>-->
         <!-- https://mvnrepository.com/artifact/org.apache.poi/poi -->
         <dependency>
             <groupId>org.apache.poi</groupId>
