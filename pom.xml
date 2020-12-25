@@ -29,7 +29,7 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xs
         <!--spring-boot-parent版本号，通过spring-boot管理其他第三方依赖版本-->
         <springboot.version>2.1.0.RELEASE</springboot.version>
         <!--mysql-->
-        <mysql.connector.version>5.1.38</mysql.connector.version>
+        <mysql.connector.version>8.0.16</mysql.connector.version>
         <commons.lang3.version>3.3.2</commons.lang3.version>
         <generator>tk.mybatis.mapper.generator.MapperPlugin</generator>
         <mapper.Mapper>tk.mybatis.mapper.common.Mapper</mapper.Mapper>
