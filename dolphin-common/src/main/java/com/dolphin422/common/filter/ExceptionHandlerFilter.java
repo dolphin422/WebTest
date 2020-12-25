@@ -6,6 +6,7 @@ import com.dolphin422.common.returnvo.ReturnVo;
 import com.google.gson.Gson;
 import java.io.IOException;
 import javax.servlet.FilterChain;
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.slf4j.Logger;
@@ -18,6 +19,7 @@ import org.springframework.web.filter.OncePerRequestFilter;
  * @createDate: 2019.03.21 20:28
  */
 public class ExceptionHandlerFilter extends OncePerRequestFilter {
+
     /**
      * logger
      */
