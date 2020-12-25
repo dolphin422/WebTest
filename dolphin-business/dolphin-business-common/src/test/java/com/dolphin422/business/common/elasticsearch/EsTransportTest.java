@@ -1,4 +1,4 @@
-package com.dolphin422.test;
+package com.dolphin422.business.common.elasticsearch;
 
 import com.dolphin422.vo.TestVo;
 import com.google.gson.Gson;
@@ -30,6 +30,7 @@ import org.slf4j.LoggerFactory;
  * Modified By:  peng
  */
 public class EsTransportTest {
+
     /**
      * logger
      */
@@ -57,8 +58,8 @@ public class EsTransportTest {
      * @author sunt
      * @date 2017年11月23日
      */
-    @SuppressWarnings({ "resource", "unchecked" })
-  //  @Before
+    @SuppressWarnings({"resource", "unchecked"})
+    //  @Before
     public void getConnect() throws UnknownHostException {
         client = new PreBuiltTransportClient(Settings.EMPTY).addTransportAddresses(
             new TransportAddress(InetAddress.getByName(HOST), PORT));
@@ -73,7 +74,7 @@ public class EsTransportTest {
      * @author sunt
      * @date 2017年11月23日
      */
-  //  @After
+    //  @After
     public void closeConnect() {
         if (null != client) {
             logger.info("执行关闭连接操作...");
@@ -92,7 +93,7 @@ public class EsTransportTest {
      * @author sunt
      * @date 2017年11月23日
      */
-  //  @Test
+    //  @Test
     public void addIndex1() throws IOException {
         XContentBuilder xContentBuilder = XContentFactory.jsonBuilder()
             .startObject().field("userName", "张三")
@@ -114,7 +115,7 @@ public class EsTransportTest {
      * @author sunt
      * @date 2017年11月23日
      */
-  //  @Test
+    //  @Test
     public void addIndex2() {
         String jsonStr = "{" +
             "\"userName\":\"张三\"," +
@@ -144,7 +145,7 @@ public class EsTransportTest {
      * @author sunt
      * @date 2017年11月23日
      */
- //   @Test
+    //   @Test
     public void addIndex3() {
         TestVo testVo = new TestVo();
         testVo.setValue("测试Vo转JSON");
@@ -175,7 +176,7 @@ public class EsTransportTest {
      * @author sunt
      * @date 2017年11月23日
      */
- //   @Test
+    //   @Test
     public void addIndex4() {
         Map<String, Object> map = new HashMap<String, Object>();
         map.put("userName", "张三");
@@ -204,7 +205,7 @@ public class EsTransportTest {
      * @author sunt
      * @date 2017年11月23日
      */
-   // @Test
+    // @Test
     public void getData1() {
         GetResponse getResponse = client.prepareGet("law", "lawtype", "2").get();
         logger.info("索引库的数据:" + getResponse.getSourceAsString());

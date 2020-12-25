@@ -1,4 +1,4 @@
-package com.dolphin422.test;
+package com.dolphin422.business.common.basics;
 
 import com.dolphin422.common.util.CustomParameterizedType;
 import com.dolphin422.common.util.GsonUtil;
@@ -70,7 +70,7 @@ public class GsonTest {
     private <T> GsonVo<T> getGsonVo(String gsonStr, Class<T> clazz) {
         Gson gson = GsonUtil.defaultGson();
         Type type = new CustomParameterizedType(GsonVo.class,
-            new Class[] { clazz });
+            new Class[]{clazz});
         GsonVo<T> object = gson.fromJson(gsonStr, type);
         logger.info("-----------------{}--object值为---->{}", System.currentTimeMillis(), object);
         return object;
@@ -86,9 +86,9 @@ public class GsonTest {
         Gson gson = GsonUtil.defaultGson();
         // 生成List<T> 中的 List<T>
         Type listType = new CustomParameterizedType(List.class,
-            new Class[] { clazz });
+            new Class[]{clazz});
         // 根据List<T>生成完整的Result<List<T>>
-        Type type = new CustomParameterizedType(GsonVo.class, new Type[] { listType });
+        Type type = new CustomParameterizedType(GsonVo.class, new Type[]{listType});
         GsonVo<List<T>> object = gson.fromJson(gsonStr, type);
         logger.info("-----------------{}--object值为---->{}", System.currentTimeMillis(), object);
         return object;

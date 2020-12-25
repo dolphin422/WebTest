@@ -1,9 +1,5 @@
 package com.dolphin422.system.service.impl.user;
 
-import cn.chaconne.credit.exception.SDKException;
-import cn.chaconne.credit.result.Result;
-import cn.chaconne.credit.service.SDKService;
-import cn.chaconne.credit.service.SDKServiceImpl;
 import com.dolphin422.common.base.BaseServiceImpl;
 import com.dolphin422.common.enumeration.statuscode.business.BusinessExceptionEnum;
 import com.dolphin422.common.exception.BusinessException;
@@ -28,6 +24,7 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 @Transactional
 public class SysUserServiceImpl extends BaseServiceImpl implements ISysUserService {
+
     /**
      * logger
      */
@@ -39,7 +36,7 @@ public class SysUserServiceImpl extends BaseServiceImpl implements ISysUserServi
     @Override
     public String getUserName(String userId) throws BusinessException {
         String currentDateTime = DateUtil.getCurrentDateTime();
-        logger.info("--现在时间:{}---实际对象SysUserServiceImpl-传入--({})--", currentDateTime,userId);
+        logger.info("--现在时间:{}---实际对象SysUserServiceImpl-传入--({})--", currentDateTime, userId);
         return currentDateTime + ":" + userId;
     }
 
@@ -48,13 +45,13 @@ public class SysUserServiceImpl extends BaseServiceImpl implements ISysUserServi
         List<SysUserModel> sysUserModelList = userDao.selectAll();
         SysUserModel sysUserModel = new SysUserModel();
         sysUserModel.setId("3");
-        SDKService sdkService = new SDKServiceImpl();
-        try {
-            Result purchaser = sdkService.getPurchaser("123456");
-            logger.info(purchaser.toString());
-        } catch (SDKException e) {
-            e.printStackTrace();
-        }
+//        SDKService sdkService = new SDKServiceImpl();
+//        try {
+//            Result purchaser = sdkService.getPurchaser("123456");
+//            logger.info(purchaser.toString());
+//        } catch (SDKException e) {
+//            e.printStackTrace();
+//        }
 
         sysUserModel.setGmtCreate(new Date());
         sysUserModelList.add(sysUserModel);

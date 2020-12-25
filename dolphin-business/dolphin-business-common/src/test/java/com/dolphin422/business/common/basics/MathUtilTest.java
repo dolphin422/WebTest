@@ -1,11 +1,10 @@
-package com.dolphin422.test;
+package com.dolphin422.business.common.basics;
 
 import com.dolphin422.common.util.MathUtil;
+import java.util.concurrent.atomic.AtomicInteger;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * @Description:
@@ -13,6 +12,7 @@ import java.util.concurrent.atomic.AtomicInteger;
  * @createDate: 2018.12.29 15:28
  */
 public class MathUtilTest {
+
     /**
      * logger
      */

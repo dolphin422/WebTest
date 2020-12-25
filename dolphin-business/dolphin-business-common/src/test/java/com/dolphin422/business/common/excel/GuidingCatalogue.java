@@ -1,4 +1,4 @@
-package com.dolphin422.test;
+package com.dolphin422.business.common.excel;
 
 
 import java.io.Serializable;
@@ -271,30 +271,30 @@ public class GuidingCatalogue implements Serializable {
     @Override
     public String toString() {
         return "GuidingCatalogue{" +
-                "catalogGuid='" + catalogGuid + '\'' +
-                ", regionGuid='" + regionGuid + '\'' +
-                ", regionCode='" + regionCode + '\'' +
-                ", year=" + year +
-                ", purSubjectGuid='" + purSubjectGuid + '\'' +
-                ", purSubjectCode='" + purSubjectCode + '\'' +
-                ", purSubjectName='" + purSubjectName + '\'' +
-                ", catalogNode='" + catalogNode + '\'' +
-                ", catalogCode='" + catalogCode + '\'' +
-                ", catalogName='" + catalogName + '\'' +
-                ", leafNode=" + leafNode +
-                ", fatherCatalogGuid='" + fatherCatalogGuid + '\'' +
-                ", fatherCatalogCode='" + fatherCatalogCode + '\'' +
-                ", fatherCatalogName='" + fatherCatalogName + '\'' +
-                ", startDate='" + startDate + '\'' +
-                ", endDate='" + endDate + '\'' +
-                ", catalogTotalCount='" + catalogTotalCount + '\'' +
-                ", catalogExplain='" + catalogExplain + '\'' +
-                ", remark='" + remark + '\'' +
-                ", createUserGuid='" + createUserGuid + '\'' +
-                ", createUser='" + createUser + '\'' +
-                ", modiUserGuid='" + modiUserGuid + '\'' +
-                ", modiUser='" + modiUser + '\'' +
-                ", catalogCodeOrder=" + catalogCodeOrder +
-                '}';
+            "catalogGuid='" + catalogGuid + '\'' +
+            ", regionGuid='" + regionGuid + '\'' +
+            ", regionCode='" + regionCode + '\'' +
+            ", year=" + year +
+            ", purSubjectGuid='" + purSubjectGuid + '\'' +
+            ", purSubjectCode='" + purSubjectCode + '\'' +
+            ", purSubjectName='" + purSubjectName + '\'' +
+            ", catalogNode='" + catalogNode + '\'' +
+            ", catalogCode='" + catalogCode + '\'' +
+            ", catalogName='" + catalogName + '\'' +
+            ", leafNode=" + leafNode +
+            ", fatherCatalogGuid='" + fatherCatalogGuid + '\'' +
+            ", fatherCatalogCode='" + fatherCatalogCode + '\'' +
+            ", fatherCatalogName='" + fatherCatalogName + '\'' +
+            ", startDate='" + startDate + '\'' +
+            ", endDate='" + endDate + '\'' +
+            ", catalogTotalCount='" + catalogTotalCount + '\'' +
+            ", catalogExplain='" + catalogExplain + '\'' +
+            ", remark='" + remark + '\'' +
+            ", createUserGuid='" + createUserGuid + '\'' +
+            ", createUser='" + createUser + '\'' +
+            ", modiUserGuid='" + modiUserGuid + '\'' +
+            ", modiUser='" + modiUser + '\'' +
+            ", catalogCodeOrder=" + catalogCodeOrder +
+            '}';
     }
 }

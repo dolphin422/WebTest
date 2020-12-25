@@ -1,4 +1,4 @@
-package com.dolphin422.test;
+package com.dolphin422.business.common.basics;
 
 import org.junit.Test;
 import org.slf4j.Logger;

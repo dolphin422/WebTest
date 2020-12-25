@@ -1,14 +1,11 @@
-package com.dolphin422.test;
-
-import org.elasticsearch.common.recycler.Recycler;
-import org.junit.Test;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+package com.dolphin422.business.common.basics;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.function.BiConsumer;
-import java.util.function.Function;
+import org.junit.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * @author DamonJT WIN
@@ -16,6 +13,7 @@ import java.util.function.Function;
  * @createDate 2019.07.30 16:49
  */
 public class CollectionTest {
+
     /**
      * logger
      */

@@ -1,8 +1,12 @@
-package com.dolphin422.test;
+package com.dolphin422.business.common.excel;
 
 import com.dolphin422.common.util.DateUtil;
 import com.dolphin422.common.util.UUIDGenerator;
 import com.google.gson.Gson;
+import java.io.File;
+import java.io.FileInputStream;
+import java.util.ArrayList;
+import java.util.List;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.poi.hssf.usermodel.HSSFCell;
 import org.apache.poi.hssf.usermodel.HSSFRow;
@@ -14,16 +18,13 @@ import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.io.*;
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  * @Description:
  * @Author: jiatai
  * @CreateDate: 2018.07.03 11:01
  */
 public class ReadExcel2Mysql {
+
     /**
      * logger
      */
