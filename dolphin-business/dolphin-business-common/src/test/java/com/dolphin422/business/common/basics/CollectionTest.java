@@ -1,6 +1,8 @@
 package com.dolphin422.business.common.basics;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.function.BiConsumer;
 import org.junit.Test;
@@ -46,5 +48,13 @@ public class CollectionTest {
                 logger.info("---------this is e -----");
             }
         });
+    }
+
+    @Test
+    public void arrayListTest() {
+        List list = new ArrayList<String>(4);
+        list.add("a");
+
+
     }
 }

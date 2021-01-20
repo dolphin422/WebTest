@@ -30,6 +30,7 @@ public class NumberChangeTest {
             changeInfoBuffer.append("S");
             changeInfoBuffer.append(String.valueOf(-changeScore));
         }
+        Integer integer = Integer.valueOf(20);
         Integer i = 12345;
         changeInfoBuffer.append(i);
         System.out.println("值 ---->" + changeInfoBuffer.toString());
